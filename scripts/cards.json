@@ -1,0 +1,1063 @@
+[
+  {
+    "answers": [
+      "A process where plants make food using sunlight.",
+      "The breakdown of rocks into smaller pieces.",
+      "The movement of water through the atmosphere and Earth.",
+      "The study of living organisms."
+    ],
+    "correctAnswer": 0,
+    "explanation": "Photosynthesis is the vital process used by plants, algae, and some bacteria to convert light energy into chemical energy, stored in glucose.",
+    "level": 1,
+    "question": "What is photosynthesis?",
+    "subject": "Biology",
+    "thumbnail": "plant leaf sunlight"
+  },
+  {
+    "answers": ["Oxygen", "Carbon Dioxide", "Nitrogen", "Water Vapor"],
+    "correctAnswer": 1,
+    "explanation": "Plants take in carbon dioxide from the atmosphere to use during photosynthesis.",
+    "level": 1,
+    "question": "Which gas do plants primarily absorb from the atmosphere for photosynthesis?",
+    "subject": "Biology",
+    "thumbnail": "plant absorbing co2"
+  },
+  {
+    "answers": ["Metamorphic", "Igneous", "Sedimentary", "Crystal"],
+    "correctAnswer": 2,
+    "explanation": "Sedimentary rocks are formed from the accumulation and cementation of sediment (like sand, silt, and clay).",
+    "level": 1,
+    "question": "Which type of rock is formed from compacted layers of sand and mud?",
+    "subject": "Geology",
+    "thumbnail": "layered rock strata"
+  },
+  {
+    "answers": ["Core", "Mantle", "Crust", "Atmosphere"],
+    "correctAnswer": 2,
+    "explanation": "The crust is the outermost solid shell of a rocky planet, dwarf planet, or natural satellite.",
+    "level": 1,
+    "question": "What is the outermost layer of the Earth called?",
+    "subject": "Geology",
+    "thumbnail": "earth layers diagram"
+  },
+  {
+    "answers": [
+      "Potential Energy",
+      "Kinetic Energy",
+      "Chemical Energy",
+      "Thermal Energy"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Kinetic energy is the energy an object possesses due to its motion.",
+    "level": 1,
+    "question": "What type of energy is associated with motion?",
+    "subject": "Natural Science",
+    "thumbnail": "running cheetah energy"
+  },
+  {
+    "answers": ["Solid", "Liquid", "Gas", "Plasma"],
+    "correctAnswer": 3,
+    "explanation": "Water exists in three common states of matter on Earth: solid (ice), liquid (water), and gas (steam/water vapor). Plasma is a less common state on Earth.",
+    "level": 1,
+    "question": "Which of the following is NOT a primary state of matter for water on Earth's surface?",
+    "subject": "Natural Science",
+    "thumbnail": "ice water steam"
+  },
+  {
+    "answers": ["DNA", "RNA", "ATP", "Glucose"],
+    "correctAnswer": 0,
+    "explanation": "DNA (Deoxyribonucleic acid) carries the genetic instructions for the development, functioning, growth and reproduction of all known organisms.",
+    "level": 1,
+    "question": "What molecule carries the genetic code in most living organisms?",
+    "subject": "Biology",
+    "thumbnail": "dna double helix structure"
+  },
+  {
+    "answers": ["Heart", "Lungs", "Brain", "Kidneys"],
+    "correctAnswer": 1,
+    "explanation": "The lungs are the primary organs of the respiratory system responsible for exchanging oxygen and carbon dioxide.",
+    "level": 1,
+    "question": "Which organ is primarily responsible for gas exchange in humans?",
+    "subject": "Biology",
+    "thumbnail": "human lungs diagram"
+  },
+  {
+    "answers": ["Volcano eruption", "Earthquake", "Weathering", "Tsunami"],
+    "correctAnswer": 2,
+    "explanation": "Weathering is the breakdown or dissolving of rocks and minerals on the surface of the Earth.",
+    "level": 1,
+    "question": "What is the process of breaking down rocks into smaller pieces called?",
+    "subject": "Geology",
+    "thumbnail": "cracked rock weathering"
+  },
+  {
+    "answers": ["Iron", "Oxygen", "Silicon", "Aluminum"],
+    "correctAnswer": 2,
+    "explanation": "Silicon and oxygen are the most abundant elements in the Earth's crust, primarily forming silicate minerals.",
+    "level": 1,
+    "question": "Which element is most abundant in the Earth's crust?",
+    "subject": "Geology",
+    "thumbnail": "earth crust elements"
+  },
+  {
+    "answers": ["Gravity", "Magnetism", "Friction", "Inertia"],
+    "correctAnswer": 0,
+    "explanation": "Gravity is the fundamental force of attraction that exists between all objects with mass.",
+    "level": 1,
+    "question": "What force keeps planets in orbit around the Sun?",
+    "subject": "Natural Science",
+    "thumbnail": "solar system orbit"
+  },
+  {
+    "answers": [
+      "Condensation",
+      "Evaporation",
+      "Precipitation",
+      "Transpiration"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Evaporation is the process where liquid water turns into water vapor (a gas) and rises into the atmosphere.",
+    "level": 1,
+    "question": "What is the process of liquid water turning into water vapor called?",
+    "subject": "Natural Science",
+    "thumbnail": "water evaporating sun"
+  },
+  {
+    "answers": ["Cell Wall", "Cell Membrane", "Cytoplasm", "Nucleus"],
+    "correctAnswer": 0,
+    "explanation": "Plant cells have a rigid cell wall outside the cell membrane, providing structural support and protection. Animal cells lack a cell wall.",
+    "level": 1,
+    "question": "Which structure is found in plant cells but not typically in animal cells?",
+    "subject": "Biology",
+    "thumbnail": "plant cell diagram highlight wall"
+  },
+  {
+    "answers": ["Virus", "Bacteria", "Fungus", "Protozoa"],
+    "correctAnswer": 1,
+    "explanation": "Bacteria are single-celled prokaryotic organisms, meaning they lack a nucleus and other membrane-bound organelles.",
+    "level": 1,
+    "question": "Which type of microorganism is prokaryotic?",
+    "subject": "Biology",
+    "thumbnail": "bacteria cell simple"
+  },
+  {
+    "answers": ["Obsidian", "Granite", "Basalt", "Pumice"],
+    "correctAnswer": 1,
+    "explanation": "Granite is a common type of intrusive igneous rock, meaning it cooled slowly beneath the Earth's surface, allowing large crystals to form.",
+    "level": 1,
+    "question": "Which of these is an example of an intrusive igneous rock?",
+    "subject": "Geology",
+    "thumbnail": "granite rock texture"
+  },
+  {
+    "answers": [
+      "Richter Scale",
+      "Mohs Scale",
+      "Beaufort Scale",
+      "Celsius Scale"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The Mohs scale of mineral hardness characterizes the scratch resistance of various minerals through the ability of a harder material to scratch a softer material.",
+    "level": 1,
+    "question": "What scale is used to measure the hardness of minerals?",
+    "subject": "Geology",
+    "thumbnail": "mineral scratch test"
+  },
+  {
+    "answers": ["Red", "Blue", "Yellow", "Green"],
+    "correctAnswer": 1,
+    "explanation": "Shorter wavelengths of light (blue and violet) are scattered more effectively by the molecules in the atmosphere than longer wavelengths (red and yellow), making the sky appear blue.",
+    "level": 1,
+    "question": "Why does the sky appear blue?",
+    "subject": "Natural Science",
+    "thumbnail": "blue sky clouds"
+  },
+  {
+    "answers": ["Atom", "Molecule", "Cell", "Organ"],
+    "correctAnswer": 0,
+    "explanation": "An atom is the smallest unit of ordinary matter that forms a chemical element.",
+    "level": 1,
+    "question": "What is the smallest basic unit of a chemical element?",
+    "subject": "Natural Science",
+    "thumbnail": "atom nucleus electrons"
+  },
+  {
+    "answers": ["Carnivore", "Herbivore", "Omnivore", "Producer"],
+    "correctAnswer": 3,
+    "explanation": "Producers, like plants, form the base of the food chain by creating their own food through photosynthesis.",
+    "level": 1,
+    "question": "In a food chain, what are organisms like plants called?",
+    "subject": "Biology",
+    "thumbnail": "simple food chain plant"
+  },
+  {
+    "answers": ["Osmosis", "Diffusion", "Active Transport", "Photosynthesis"],
+    "correctAnswer": 0,
+    "explanation": "Osmosis is the movement of water molecules from a region of higher water concentration to a region of lower water concentration through a semipermeable membrane.",
+    "level": 1,
+    "question": "What is the movement of water across a semipermeable membrane called?",
+    "subject": "Biology",
+    "thumbnail": "osmosis membrane water"
+  },
+  {
+    "answers": [
+      "Epicenter",
+      "Focus (Hypocenter)",
+      "Fault Line",
+      "Seismic Wave"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The focus or hypocenter is the point within the Earth where an earthquake rupture starts.",
+    "level": 1,
+    "question": "What is the point inside the Earth where an earthquake originates?",
+    "subject": "Geology",
+    "thumbnail": "earthquake focus epicenter diagram"
+  },
+  {
+    "answers": ["Wind", "Water", "Ice (Glaciers)", "Gravity"],
+    "correctAnswer": 2,
+    "explanation": "Glaciers are powerful agents of erosion, carving out valleys and transporting large amounts of rock and sediment. U-shaped valleys are characteristic of glacial erosion.",
+    "level": 1,
+    "question": "Which agent of erosion typically creates U-shaped valleys?",
+    "subject": "Geology",
+    "thumbnail": "u-shaped valley glacier"
+  },
+  {
+    "answers": [
+      "Sound travels faster than light",
+      "Light travels faster than sound",
+      "They travel at the same speed",
+      "Speed depends on the weather"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Light travels significantly faster (approx. 300,000 km/s) than sound (approx. 343 m/s in air), which is why you see lightning before you hear thunder.",
+    "level": 1,
+    "question": "During a thunderstorm, why do you see lightning before hearing thunder?",
+    "subject": "Natural Science",
+    "thumbnail": "lightning strike night sky"
+  },
+  {
+    "answers": ["pH 7", "pH below 7", "pH above 7", "pH 0"],
+    "correctAnswer": 1,
+    "explanation": "The pH scale ranges from 0 to 14. Substances with a pH below 7 are acidic, those with a pH above 7 are alkaline (basic), and a pH of 7 is neutral.",
+    "level": 1,
+    "question": "What pH range indicates an acidic solution?",
+    "subject": "Natural Science",
+    "thumbnail": "ph scale acidic side"
+  },
+  {
+    "answers": ["Mitosis", "Meiosis", "Binary Fission", "Budding"],
+    "correctAnswer": 0,
+    "explanation": "Mitosis is a type of cell division that results in two daughter cells each having the same number and kind of chromosomes as the parent nucleus, typical of ordinary tissue growth.",
+    "level": 1,
+    "question": "What process do somatic (body) cells use to divide?",
+    "subject": "Biology",
+    "thumbnail": "mitosis cell division diagram"
+  },
+  {
+    "answers": ["Allele", "Gene", "Chromosome", "Genotype"],
+    "correctAnswer": 0,
+    "explanation": "An allele is one of two or more alternative forms of a gene that arise by mutation and are found at the same place on a chromosome.",
+    "level": 1,
+    "question": "What is a specific version or variation of a gene called?",
+    "subject": "Biology",
+    "thumbnail": "gene allele comparison"
+  },
+  {
+    "answers": [
+      "Fossil Fuels",
+      "Geothermal Energy",
+      "Solar Energy",
+      "Hydroelectric Power"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Fossil fuels (coal, oil, natural gas) are formed from the remains of ancient organisms over millions of years and are considered non-renewable resources.",
+    "level": 1,
+    "question": "Which of these energy sources is considered non-renewable?",
+    "subject": "Geology",
+    "thumbnail": "oil rig fossil fuel"
+  },
+  {
+    "answers": ["Quartz", "Feldspar", "Mica", "Calcite"],
+    "correctAnswer": 3,
+    "explanation": "Calcite (calcium carbonate) reacts with weak acids, like hydrochloric acid, producing bubbles of carbon dioxide gas.",
+    "level": 1,
+    "question": "Which common mineral fizzes when acid is applied to it?",
+    "subject": "Geology",
+    "thumbnail": "acid test on calcite"
+  },
+  {
+    "answers": ["Reflection", "Refraction", "Diffraction", "Absorption"],
+    "correctAnswer": 1,
+    "explanation": "Refraction is the bending of a wave (like light) as it passes from one medium into another where its speed is different.",
+    "level": 1,
+    "question": "What is the bending of light as it passes from air into water called?",
+    "subject": "Natural Science",
+    "thumbnail": "pencil in water refraction"
+  },
+  {
+    "answers": ["Weight", "Mass", "Volume", "Density"],
+    "correctAnswer": 1,
+    "explanation": "Mass is the measure of the amount of matter in an object and remains constant regardless of location (like Earth vs. Moon). Weight depends on gravity.",
+    "level": 1,
+    "question": "What property of matter measures its resistance to acceleration (inertia)?",
+    "subject": "Natural Science",
+    "thumbnail": "balance scale mass"
+  },
+  {
+    "answers": ["Vertebrates", "Invertebrates", "Mammals", "Reptiles"],
+    "correctAnswer": 1,
+    "explanation": "Invertebrates are animals that lack a vertebral column (backbone). This group includes insects, spiders, worms, jellyfish, etc.",
+    "level": 1,
+    "question": "What term describes animals without a backbone?",
+    "subject": "Biology",
+    "thumbnail": "insect invertebrate"
+  },
+  {
+    "answers": ["Homeostasis", "Metabolism", "Evolution", "Respiration"],
+    "correctAnswer": 0,
+    "explanation": "Homeostasis is the ability of an organism or system to maintain a stable internal environment despite changes in external conditions.",
+    "level": 1,
+    "question": "What is the maintenance of a stable internal environment in an organism called?",
+    "subject": "Biology",
+    "thumbnail": "thermostat homeostasis analogy"
+  },
+  {
+    "answers": ["Igneous", "Sedimentary", "Metamorphic", "Mineral"],
+    "correctAnswer": 2,
+    "explanation": "Metamorphic rocks form when existing rocks (igneous, sedimentary, or other metamorphic rocks) are changed by heat, pressure, or chemical reactions.",
+    "level": 1,
+    "question": "Which type of rock is formed by heat and pressure transforming existing rock?",
+    "subject": "Geology",
+    "thumbnail": "gneiss metamorphic rock"
+  },
+  {
+    "answers": ["Plate Tectonics", "Rock Cycle", "Water Cycle", "Carbon Cycle"],
+    "correctAnswer": 0,
+    "explanation": "The theory of plate tectonics describes the large-scale motion of the Earth's lithosphere, explaining phenomena like earthquakes, volcanic activity, and mountain building.",
+    "level": 1,
+    "question": "What theory explains the movement of Earth's continents and ocean floors?",
+    "subject": "Geology",
+    "thumbnail": "tectonic plates map"
+  },
+  {
+    "answers": ["Conduction", "Convection", "Radiation", "Insulation"],
+    "correctAnswer": 2,
+    "explanation": "Radiation is the transfer of heat through electromagnetic waves, like the heat felt from the sun or a campfire, without needing a medium.",
+    "level": 1,
+    "question": "How does heat from the Sun reach Earth?",
+    "subject": "Natural Science",
+    "thumbnail": "sun rays reaching earth"
+  },
+  {
+    "answers": ["Salt", "Sugar", "Flour", "Sand"],
+    "correctAnswer": 0,
+    "explanation": "Salt (specifically sodium chloride, NaCl) readily dissolves in water, forming a solution. Sugar also dissolves, but salt is often used as a primary example.",
+    "level": 1,
+    "question": "Which common kitchen substance dissolves readily in water?",
+    "subject": "Natural Science",
+    "thumbnail": "salt dissolving in water"
+  },
+  {
+    "answers": ["Stamen", "Pistil (Carpel)", "Petal", "Sepal"],
+    "correctAnswer": 0,
+    "explanation": "The stamen is the male reproductive part of a flower, typically consisting of the anther (which produces pollen) and the filament.",
+    "level": 1,
+    "question": "What is the male reproductive part of a flower called?",
+    "subject": "Biology",
+    "thumbnail": "flower parts diagram stamen"
+  },
+  {
+    "answers": ["Symbiosis", "Predation", "Competition", "Parasitism"],
+    "correctAnswer": 0,
+    "explanation": "Symbiosis is a general term for close and long-term interaction between two different biological species. It includes mutualism, commensalism, and parasitism.",
+    "level": 1,
+    "question": "What term describes a close, long-term interaction between two different species?",
+    "subject": "Biology",
+    "thumbnail": "clownfish anemone symbiosis"
+  },
+  {
+    "answers": ["Erosion", "Deposition", "Weathering", "Compaction"],
+    "correctAnswer": 1,
+    "explanation": "Deposition is the geological process in which sediments, soil and rocks are added to a landform or land mass. Wind, ice, water, and gravity transport previously weathered surface material, which, at the loss of enough kinetic energy in the fluid, is deposited.",
+    "level": 1,
+    "question": "What is the geological process where sediments are dropped or settled?",
+    "subject": "Geology",
+    "thumbnail": "river delta deposition"
+  },
+  {
+    "answers": ["Loam", "Clay", "Sand", "Silt"],
+    "correctAnswer": 1,
+    "explanation": "Clay particles are the smallest mineral particles in soil, typically less than 0.002 mm in diameter. They feel sticky when wet.",
+    "level": 1,
+    "question": "Which soil type has the smallest particle size?",
+    "subject": "Geology",
+    "thumbnail": "soil particle size comparison"
+  },
+  {
+    "answers": ["Nitrogen", "Oxygen", "Argon", "Carbon Dioxide"],
+    "correctAnswer": 0,
+    "explanation": "Nitrogen gas (N2) makes up about 78% of the Earth's atmosphere by volume.",
+    "level": 1,
+    "question": "What is the most abundant gas in Earth's atmosphere?",
+    "subject": "Natural Science",
+    "thumbnail": "earth atmosphere composition chart"
+  },
+  {
+    "answers": ["New Moon", "Full Moon", "First Quarter", "Third Quarter"],
+    "correctAnswer": 1,
+    "explanation": "A lunar eclipse occurs when the Earth passes directly between the Sun and Moon, casting a shadow on the Moon. This can only happen during the Full Moon phase.",
+    "level": 1,
+    "question": "During which phase of the Moon can a lunar eclipse occur?",
+    "subject": "Natural Science",
+    "thumbnail": "lunar eclipse diagram"
+  },
+  {
+    "answers": ["Mutation", "Natural Selection", "Genetic Drift", "Gene Flow"],
+    "correctAnswer": 1,
+    "explanation": "Natural selection is the process whereby organisms better adapted to their environment tend to survive and produce more offspring.",
+    "level": 1,
+    "question": "What is the primary mechanism Charles Darwin proposed for evolution?",
+    "subject": "Biology",
+    "thumbnail": "finches beaks evolution"
+  },
+  {
+    "answers": ["Ribosomes", "Lysosomes", "Vacuoles", "Chloroplasts"],
+    "correctAnswer": 0,
+    "explanation": "Ribosomes are responsible for synthesizing proteins by translating the genetic code carried by messenger RNA (mRNA).",
+    "level": 1,
+    "question": "Which organelle is responsible for protein synthesis?",
+    "subject": "Biology",
+    "thumbnail": "ribosome protein synthesis"
+  },
+  {
+    "answers": ["Fossil", "Mineral", "Crystal", "Gemstone"],
+    "correctAnswer": 0,
+    "explanation": "Fossils are the preserved remains, impressions, or traces of organisms that lived in the past.",
+    "level": 1,
+    "question": "What is the preserved remains or trace of an ancient organism called?",
+    "subject": "Geology",
+    "thumbnail": "ammonite fossil shell"
+  },
+  {
+    "answers": ["Asthenosphere", "Lithosphere", "Mesosphere", "Outer Core"],
+    "correctAnswer": 1,
+    "explanation": "The lithosphere is the rigid outer part of the Earth, consisting of the crust and upper mantle. It is divided into tectonic plates.",
+    "level": 1,
+    "question": "What is the rigid layer of the Earth, including the crust and upper mantle, called?",
+    "subject": "Geology",
+    "thumbnail": "earth layers lithosphere"
+  },
+  {
+    "answers": ["Velocity", "Acceleration", "Speed", "Momentum"],
+    "correctAnswer": 1,
+    "explanation": "Acceleration is the rate of change of velocity of an object with respect to time. It involves a change in speed, direction, or both.",
+    "level": 1,
+    "question": "What term describes the rate of change of velocity?",
+    "subject": "Natural Science",
+    "thumbnail": "car accelerating speed"
+  },
+  {
+    "answers": ["Mars", "Jupiter", "Saturn", "Venus"],
+    "correctAnswer": 0,
+    "explanation": "Mars is often called the 'Red Planet' due to the prevalence of iron oxide (rust) on its surface.",
+    "level": 1,
+    "question": "Which planet is known as the 'Red Planet'?",
+    "subject": "Natural Science",
+    "thumbnail": "mars red planet surface"
+  },
+  {
+    "answers": ["Enzymes", "Hormones", "Antibodies", "Carbohydrates"],
+    "correctAnswer": 0,
+    "explanation": "Enzymes are biological catalysts, typically proteins, that speed up biochemical reactions without being consumed in the process.",
+    "level": 1,
+    "question": "What type of protein acts as a biological catalyst?",
+    "subject": "Biology",
+    "thumbnail": "enzyme substrate complex"
+  },
+  {
+    "answers": [
+      "Digestive System",
+      "Nervous System",
+      "Endocrine System",
+      "Circulatory System"
+    ],
+    "correctAnswer": 2,
+    "explanation": "The endocrine system consists of glands that produce and secrete hormones, which regulate various bodily functions like metabolism, growth, and mood.",
+    "level": 1,
+    "question": "Which body system is primarily responsible for producing hormones?",
+    "subject": "Biology",
+    "thumbnail": "endocrine glands diagram"
+  },
+  {
+    "answers": ["Magma", "Lava", "Sediment", "Ash"],
+    "correctAnswer": 0,
+    "explanation": "Magma is molten rock found beneath the Earth's surface. When it erupts onto the surface, it is called lava.",
+    "level": 1,
+    "question": "What is molten rock called when it is still beneath the Earth's surface?",
+    "subject": "Geology",
+    "thumbnail": "magma chamber under volcano"
+  },
+  {
+    "answers": ["P-waves", "S-waves", "Surface waves", "Sound waves"],
+    "correctAnswer": 0,
+    "explanation": "P-waves (primary waves) are compressional seismic waves that travel faster than other types of seismic waves and can pass through solids, liquids, and gases.",
+    "level": 1,
+    "question": "Which type of seismic wave travels fastest and can pass through liquids?",
+    "subject": "Geology",
+    "thumbnail": "p-wave propagation diagram"
+  },
+  {
+    "answers": ["Acid Rain", "Greenhouse Effect", "Ozone Depletion", "Smog"],
+    "correctAnswer": 1,
+    "explanation": "The greenhouse effect is a natural process where certain gases in the atmosphere trap heat, warming the planet. Enhanced greenhouse effect due to human activities leads to global warming.",
+    "level": 1,
+    "question": "What natural process warms the Earth's surface via atmospheric gases trapping heat?",
+    "subject": "Natural Science",
+    "thumbnail": "greenhouse effect diagram simple"
+  },
+  {
+    "answers": [
+      "Density = Mass / Volume",
+      "Density = Volume / Mass",
+      "Density = Mass * Volume",
+      "Density = Mass + Volume"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Density is defined as the mass of a substance per unit volume.",
+    "level": 1,
+    "question": "How is density calculated?",
+    "subject": "Natural Science",
+    "thumbnail": "density formula triangle"
+  },
+  {
+    "answers": ["Ecosystem", "Population", "Community", "Biome"],
+    "correctAnswer": 0,
+    "explanation": "An ecosystem includes all the living organisms (biotic factors) in an area, as well as the non-living physical components (abiotic factors) of the environment, such as air, water, and soil.",
+    "level": 1,
+    "question": "What term describes all living organisms and their physical environment in a specific area?",
+    "subject": "Biology",
+    "thumbnail": "forest ecosystem illustration"
+  },
+  {
+    "answers": ["Veins", "Arteries", "Capillaries", "Aorta"],
+    "correctAnswer": 1,
+    "explanation": "Arteries are blood vessels that carry oxygenated blood (usually) away from the heart to the rest of the body. Veins typically carry deoxygenated blood towards the heart.",
+    "level": 1,
+    "question": "Which type of blood vessel typically carries blood away from the heart?",
+    "subject": "Biology",
+    "thumbnail": "artery vein diagram"
+  },
+  {
+    "answers": [
+      "Continental Drift",
+      "Seafloor Spreading",
+      "Subduction",
+      "Rifting"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Subduction is a geological process at convergent boundaries where one tectonic plate moves under another and is forced into the mantle.",
+    "level": 1,
+    "question": "What is the process where one tectonic plate slides beneath another?",
+    "subject": "Geology",
+    "thumbnail": "subduction zone diagram"
+  },
+  {
+    "answers": ["Radiation", "Conduction", "Convection", "Advection"],
+    "correctAnswer": 2,
+    "explanation": "Convection is the transfer of heat through the movement of fluids (liquids or gases). Boiling water involves hot water rising and cooler water sinking, creating convection currents.",
+    "level": 1,
+    "question": "What is the primary method of heat transfer in boiling water?",
+    "subject": "Natural Science",
+    "thumbnail": "boiling water convection currents"
+  },
+  {
+    "answers": [
+      "Ionic Bond",
+      "Covalent Bond",
+      "Metallic Bond",
+      "Hydrogen Bond"
+    ],
+    "correctAnswer": 1,
+    "explanation": "A covalent bond involves the sharing of electron pairs between atoms. These electron pairs are known as shared pairs or bonding pairs.",
+    "level": 1,
+    "question": "What type of chemical bond involves the sharing of electrons between atoms?",
+    "subject": "Natural Science",
+    "thumbnail": "covalent bond electron sharing"
+  },
+  {
+    "answers": [
+      "Glycolysis",
+      "Krebs Cycle (Citric Acid Cycle)",
+      "Electron Transport Chain",
+      "Fermentation"
+    ],
+    "correctAnswer": 2,
+    "explanation": "The Electron Transport Chain, occurring in the inner mitochondrial membrane, is the stage of aerobic respiration that produces the largest amount of ATP.",
+    "level": 2,
+    "question": "Which stage of cellular respiration produces the most ATP?",
+    "subject": "Biology",
+    "thumbnail": "electron transport chain diagram"
+  },
+  {
+    "answers": ["Stomata", "Xylem", "Phloem", "Cuticle"],
+    "correctAnswer": 2,
+    "explanation": "Phloem is the vascular tissue in plants that conducts sugars (produced during photosynthesis) downwards from the leaves to other parts of the plant.",
+    "level": 2,
+    "question": "Which plant tissue is responsible for transporting sugars?",
+    "subject": "Biology",
+    "thumbnail": "xylem phloem plant stem"
+  },
+  {
+    "answers": [
+      "Bowen's Reaction Series",
+      "Mohs Hardness Scale",
+      "Rock Cycle Diagram",
+      "Geologic Time Scale"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Bowen's Reaction Series describes the sequence in which minerals crystallize from cooling magma, relating mineral formation temperature to silicate structure.",
+    "level": 2,
+    "question": "What geological principle describes the sequence of mineral crystallization from magma?",
+    "subject": "Geology",
+    "thumbnail": "bowens reaction series chart"
+  },
+  {
+    "answers": [
+      "Divergent Boundary",
+      "Convergent Boundary",
+      "Transform Boundary",
+      "Subduction Zone"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Transform boundaries occur where tectonic plates slide horizontally past each other. The San Andreas Fault is a classic example.",
+    "level": 2,
+    "question": "The San Andreas Fault is an example of which type of plate boundary?",
+    "subject": "Geology",
+    "thumbnail": "transform fault boundary diagram"
+  },
+  {
+    "answers": [
+      "Newton's First Law",
+      "Newton's Second Law",
+      "Newton's Third Law",
+      "Law of Conservation of Energy"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Newton's Third Law states that for every action, there is an equal and opposite reaction. Forces always occur in pairs.",
+    "level": 2,
+    "question": "Which law of motion states 'for every action, there is an equal and opposite reaction'?",
+    "subject": "Natural Science",
+    "thumbnail": "rocket launch action reaction"
+  },
+  {
+    "answers": ["Isotopes", "Ions", "Isomers", "Allotropes"],
+    "correctAnswer": 0,
+    "explanation": "Isotopes are atoms of the same element that have the same number of protons but different numbers of neutrons, resulting in different mass numbers.",
+    "level": 2,
+    "question": "What are atoms of the same element with different numbers of neutrons called?",
+    "subject": "Natural Science",
+    "thumbnail": "carbon isotopes comparison"
+  },
+  {
+    "answers": ["Transcription", "Translation", "Replication", "Mutation"],
+    "correctAnswer": 1,
+    "explanation": "Translation is the process where the genetic information encoded in messenger RNA (mRNA) directs the formation of a specific protein at a ribosome.",
+    "level": 2,
+    "question": "What is the process of synthesizing protein from an mRNA template called?",
+    "subject": "Biology",
+    "thumbnail": "mrna ribosome translation"
+  },
+  {
+    "answers": [
+      "Chemosynthesis",
+      "Photosynthesis",
+      "Respiration",
+      "Fermentation"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Chemosynthesis is the process used by some organisms, particularly bacteria in deep-sea vents, to produce energy from chemical reactions instead of sunlight.",
+    "level": 2,
+    "question": "What process do organisms in deep-sea vents use to produce energy without sunlight?",
+    "subject": "Biology",
+    "thumbnail": "hydrothermal vent ecosystem"
+  },
+  {
+    "answers": [
+      "Absolute Dating",
+      "Relative Dating",
+      "Carbon Dating",
+      "Potassium-Argon Dating"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Relative dating determines the relative order of past events (i.e., the age of an object in comparison to another), without necessarily determining their absolute age. Principles like superposition are used.",
+    "level": 2,
+    "question": "Determining if one rock layer is older than another without assigning a specific age is called?",
+    "subject": "Geology",
+    "thumbnail": "rock strata relative dating"
+  },
+  {
+    "answers": [
+      "Shield Volcano",
+      "Stratovolcano (Composite)",
+      "Cinder Cone",
+      "Caldera"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Shield volcanoes, like those in Hawaii, are built almost entirely of fluid lava flows, resulting in broad, gently sloping cones.",
+    "level": 2,
+    "question": "Which type of volcano is characterized by broad, gentle slopes and effusive eruptions?",
+    "subject": "Geology",
+    "thumbnail": "shield volcano profile"
+  },
+  {
+    "answers": ["Ultraviolet (UV)", "Infrared (IR)", "Visible Light", "X-rays"],
+    "correctAnswer": 0,
+    "explanation": "The ozone layer in the stratosphere absorbs most of the Sun's harmful ultraviolet (UV) radiation, particularly UV-B and UV-C.",
+    "level": 2,
+    "question": "Which type of electromagnetic radiation is primarily absorbed by the ozone layer?",
+    "subject": "Natural Science",
+    "thumbnail": "ozone layer absorbing uv"
+  },
+  {
+    "answers": [
+      "First Law of Thermodynamics",
+      "Second Law of Thermodynamics",
+      "Third Law of Thermodynamics",
+      "Zeroth Law of Thermodynamics"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The Second Law of Thermodynamics states that the total entropy (disorder) of an isolated system can only increase over time, or remain constant in ideal cases where the system is in a steady state or undergoing a reversible process.",
+    "level": 2,
+    "question": "Which law states that the total entropy of an isolated system tends to increase?",
+    "subject": "Natural Science",
+    "thumbnail": "entropy increasing concept"
+  },
+  {
+    "answers": ["Haploid", "Diploid", "Tetraploid", "Aneuploid"],
+    "correctAnswer": 0,
+    "explanation": "Gametes (sperm and egg cells) are haploid, meaning they contain only one set of chromosomes. The fusion of two haploid gametes during fertilization restores the diploid number.",
+    "level": 2,
+    "question": "What term describes a cell containing a single set of chromosomes (like a gamete)?",
+    "subject": "Biology",
+    "thumbnail": "haploid diploid comparison"
+  },
+  {
+    "answers": [
+      "Hardy-Weinberg Equilibrium",
+      "Mendelian Inheritance",
+      "Central Dogma",
+      "Endosymbiotic Theory"
+    ],
+    "correctAnswer": 3,
+    "explanation": "The endosymbiotic theory proposes that eukaryotic organelles like mitochondria and chloroplasts originated as free-living prokaryotes that were engulfed by larger host cells.",
+    "level": 2,
+    "question": "What theory explains the origin of mitochondria and chloroplasts in eukaryotic cells?",
+    "subject": "Biology",
+    "thumbnail": "endosymbiotic theory diagram"
+  },
+  {
+    "answers": ["Uniformitarianism", "Catastrophism", "Neptunism", "Plutonism"],
+    "correctAnswer": 0,
+    "explanation": "Uniformitarianism is the principle that the same natural laws and processes that operate in the universe now have always operated in the universe in the past and apply everywhere. 'The present is the key to the past'.",
+    "level": 2,
+    "question": "What geological principle states that 'the present is the key to the past'?",
+    "subject": "Geology",
+    "thumbnail": "canyon erosion past present"
+  },
+  {
+    "answers": [
+      "Karst Topography",
+      "Fluvial Landscape",
+      "Aeolian Landforms",
+      "Glacial Terrain"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Karst topography is a landscape formed from the dissolution of soluble rocks such as limestone, dolomite, and gypsum. It is characterized by underground drainage systems with sinkholes and caves.",
+    "level": 2,
+    "question": "What type of landscape is characterized by sinkholes, caves, and disappearing streams?",
+    "subject": "Geology",
+    "thumbnail": "karst topography cave system"
+  },
+  {
+    "answers": ["Buoyancy", "Surface Tension", "Viscosity", "Capillary Action"],
+    "correctAnswer": 1,
+    "explanation": "Surface tension is the tendency of liquid surfaces to shrink into the minimum surface area possible, caused by cohesive forces between liquid molecules. It allows insects to walk on water.",
+    "level": 2,
+    "question": "What property allows insects like water striders to walk on water?",
+    "subject": "Natural Science",
+    "thumbnail": "water strider on surface"
+  },
+  {
+    "answers": [
+      "Doppler Effect",
+      "Photoelectric Effect",
+      "Compton Scattering",
+      "Diffraction"
+    ],
+    "correctAnswer": 0,
+    "explanation": "The Doppler effect is the change in frequency or wavelength of a wave in relation to an observer who is moving relative to the wave source. It causes the pitch of a siren to change as it passes.",
+    "level": 2,
+    "question": "What phenomenon causes the apparent change in frequency of a wave (like sound or light) due to relative motion?",
+    "subject": "Natural Science",
+    "thumbnail": "doppler effect ambulance siren"
+  },
+  {
+    "answers": ["Operon", "Codon", "Intron", "Exon"],
+    "correctAnswer": 0,
+    "explanation": "An operon is a functioning unit of DNA containing a cluster of genes under the control of a single promoter and operator. It's common in prokaryotes for regulating gene expression.",
+    "level": 2,
+    "question": "What is a cluster of genes controlled by a single promoter, common in prokaryotes?",
+    "subject": "Biology",
+    "thumbnail": "lac operon diagram"
+  },
+  {
+    "answers": [
+      "Epigenetics",
+      "Pleiotropy",
+      "Polygenic Inheritance",
+      "Codominance"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Pleiotropy occurs when one gene influences two or more seemingly unrelated phenotypic traits. For example, the gene causing sickle cell anemia also confers malaria resistance.",
+    "level": 2,
+    "question": "What phenomenon occurs when a single gene affects multiple phenotypic traits?",
+    "subject": "Biology",
+    "thumbnail": "gene affecting multiple traits"
+  },
+  {
+    "answers": ["Orogenesis", "Epeirogenesis", "Isostasy", "Lithification"],
+    "correctAnswer": 2,
+    "explanation": "Isostasy is the state of gravitational equilibrium between Earth's crust and mantle such that the crust 'floats' at an elevation depending on its thickness and density. Post-glacial rebound is an example of isostatic adjustment.",
+    "level": 2,
+    "question": "What principle describes the gravitational balance that determines the elevation of the Earth's crust?",
+    "subject": "Geology",
+    "thumbnail": "isostasy iceberg analogy"
+  },
+  {
+    "answers": ["Diagenesis", "Metamorphism", "Anatexis", "Catagenesis"],
+    "correctAnswer": 0,
+    "explanation": "Diagenesis refers to the sum of all physical, chemical, and biological changes undergone by sediment after its initial deposition, during and after its lithification, exclusive of surface alteration (weathering) and metamorphism.",
+    "level": 2,
+    "question": "What term encompasses the physical and chemical changes converting sediment into sedimentary rock?",
+    "subject": "Geology",
+    "thumbnail": "sediment lithification process"
+  },
+  {
+    "answers": ["Fusion", "Fission", "Beta Decay", "Alpha Decay"],
+    "correctAnswer": 0,
+    "explanation": "Nuclear fusion is the process where two light atomic nuclei combine to form a heavier nucleus, releasing a large amount of energy. This is the process powering the Sun.",
+    "level": 2,
+    "question": "What nuclear process powers the Sun and other stars?",
+    "subject": "Natural Science",
+    "thumbnail": "nuclear fusion diagram sun"
+  },
+  {
+    "answers": ["Black Hole", "Neutron Star", "White Dwarf", "Red Giant"],
+    "correctAnswer": 2,
+    "explanation": "A white dwarf is the dense remnant core of a low-to-medium mass star (like the Sun) after it has exhausted its nuclear fuel and shed its outer layers.",
+    "level": 2,
+    "question": "What is the expected final stage for a star like our Sun?",
+    "subject": "Natural Science",
+    "thumbnail": "white dwarf star illustration"
+  },
+  {
+    "answers": ["Apoptosis", "Necrosis", "Autophagy", "Mitosis"],
+    "correctAnswer": 0,
+    "explanation": "Apoptosis is a form of programmed cell death that occurs in multicellular organisms. It's a highly regulated process essential for development and tissue maintenance.",
+    "level": 2,
+    "question": "What is the biological term for programmed cell death?",
+    "subject": "Biology",
+    "thumbnail": "apoptosis cell blebbing"
+  },
+  {
+    "answers": [
+      "Allopatric Speciation",
+      "Sympatric Speciation",
+      "Parapatric Speciation",
+      "Peripatric Speciation"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Sympatric speciation is the evolution of a new species from a surviving ancestral species while both continue to inhabit the same geographic region. Factors like polyploidy or sexual selection can drive it.",
+    "level": 2,
+    "question": "What type of speciation occurs without geographic isolation?",
+    "subject": "Biology",
+    "thumbnail": "sympatric speciation diagram"
+  },
+  {
+    "answers": [
+      "Wilson Cycle",
+      "Milankovitch Cycles",
+      "Rock Cycle",
+      "Carbon Cycle"
+    ],
+    "correctAnswer": 0,
+    "explanation": "The Wilson Cycle describes the cyclical opening and closing of ocean basins caused by the movement of Earth's tectonic plates, involving continental rifting, seafloor spreading, subduction, and collision.",
+    "level": 2,
+    "question": "What concept describes the cycle of ocean basin opening and closing?",
+    "subject": "Geology",
+    "thumbnail": "wilson cycle stages"
+  },
+  {
+    "answers": ["Esker", "Drumlin", "Moraine", "Kame"],
+    "correctAnswer": 1,
+    "explanation": "A drumlin is an elongated hill formed by glacial ice acting on underlying unconsolidated material. They are often found in 'drumlin fields' or 'swarms'.",
+    "level": 2,
+    "question": "What glacial landform is an elongated, asymmetrical hill composed of till?",
+    "subject": "Geology",
+    "thumbnail": "drumlin glacial landform"
+  },
+  {
+    "answers": ["Brownian Motion", "Osmosis", "Diffusion", "Advection"],
+    "correctAnswer": 0,
+    "explanation": "Brownian motion is the random movement of particles suspended in a fluid (a liquid or a gas) resulting from their collision with the fast-moving molecules in the fluid.",
+    "level": 2,
+    "question": "What is the random movement of microscopic particles suspended in a fluid called?",
+    "subject": "Natural Science",
+    "thumbnail": "brownian motion particles"
+  },
+  {
+    "answers": [
+      "Kepler's Laws",
+      "Newton's Law of Gravitation",
+      "Hubble's Law",
+      "Einstein's Theory of Relativity"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Hubble's Law describes the observation that galaxies are moving away from Earth at speeds proportional to their distance. It provides evidence for the expansion of the universe.",
+    "level": 2,
+    "question": "Which law describes the relationship between a galaxy's distance and its recessional velocity?",
+    "subject": "Natural Science",
+    "thumbnail": "expanding universe hubble"
+  },
+  {
+    "answers": [
+      "Alternative Splicing",
+      "RNA Interference (RNAi)",
+      "Post-translational Modification",
+      "Operon Regulation"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Alternative splicing is a regulated process during gene expression that results in a single gene coding for multiple proteins. Particular exons of a gene may be included within or excluded from the final, processed messenger RNA (mRNA).",
+    "level": 3,
+    "question": "What process allows a single gene to code for multiple protein variants by varying exon inclusion?",
+    "subject": "Biology",
+    "thumbnail": "alternative splicing exons"
+  },
+  {
+    "answers": [
+      "CRISPR-Cas9",
+      "Polymerase Chain Reaction (PCR)",
+      "Gel Electrophoresis",
+      "Southern Blotting"
+    ],
+    "correctAnswer": 0,
+    "explanation": "CRISPR-Cas9 is a gene editing technology that allows scientists to make precise modifications to DNA by cutting specific sequences and allowing natural DNA repair processes to take over.",
+    "level": 3,
+    "question": "Which molecular tool allows for precise editing of genomic DNA sequences?",
+    "subject": "Biology",
+    "thumbnail": "crispr cas9 gene editing"
+  },
+  {
+    "answers": ["Chert", "Gneiss", "Schist", "Eclogite"],
+    "correctAnswer": 3,
+    "explanation": "Eclogite is a very high-pressure metamorphic rock formed primarily from basalt or gabbro under conditions typically found in the mantle or subducted oceanic crust. It's composed mainly of garnet and omphacite (a clinopyroxene).",
+    "level": 3,
+    "question": "Which high-pressure metamorphic rock, rich in garnet and omphacite, indicates deep crustal or mantle conditions?",
+    "subject": "Geology",
+    "thumbnail": "eclogite rock sample"
+  },
+  {
+    "answers": [
+      "Magnetic Declination",
+      "Magnetic Inclination (Dip)",
+      "Paleomagnetism",
+      "Geomagnetic Reversal"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Magnetic inclination or dip angle is the angle made with the horizontal by the Earth's magnetic field lines. It is 0° at the magnetic equator and 90° (pointing down in the N. Hemisphere) at the magnetic poles.",
+    "level": 3,
+    "question": "What term describes the angle between the Earth's magnetic field lines and the horizontal plane?",
+    "subject": "Geology",
+    "thumbnail": "magnetic inclination compass"
+  },
+  {
+    "answers": [
+      "Heisenberg Uncertainty Principle",
+      "Pauli Exclusion Principle",
+      "Aufbau Principle",
+      "Hund's Rule"
+    ],
+    "correctAnswer": 0,
+    "explanation": "The Heisenberg Uncertainty Principle states that there is a fundamental limit to the precision with which certain pairs of physical properties of a particle, known as complementary variables (e.g., position and momentum), can be known simultaneously.",
+    "level": 3,
+    "question": "Which principle in quantum mechanics states that one cannot simultaneously know the precise position and momentum of a particle?",
+    "subject": "Natural Science",
+    "thumbnail": "uncertainty principle wave packet"
+  },
+  {
+    "answers": ["Lenz's Law", "Faraday's Law", "Ampère's Law", "Ohm's Law"],
+    "correctAnswer": 0,
+    "explanation": "Lenz's Law states that the direction of the electric current induced in a conductor by a changing magnetic field is such that the magnetic field created by the induced current opposes the change in the initial magnetic field.",
+    "level": 3,
+    "question": "Which law describes the direction of induced electric current opposing the change that caused it?",
+    "subject": "Natural Science",
+    "thumbnail": "lenzs law magnetic field loop"
+  },
+  {
+    "answers": [
+      "MHC (Major Histocompatibility Complex)",
+      "Toll-like Receptors (TLRs)",
+      "Antibodies (Immunoglobulins)",
+      "Cytokines"
+    ],
+    "correctAnswer": 0,
+    "explanation": "MHC molecules are cell surface proteins essential for the acquired immune system to recognize foreign molecules (antigens) presented by antigen-presenting cells.",
+    "level": 3,
+    "question": "What group of cell surface proteins is crucial for antigen presentation to T-lymphocytes?",
+    "subject": "Biology",
+    "thumbnail": "mhc antigen presentation"
+  },
+  {
+    "answers": [
+      "Homeobox Genes (Hox Genes)",
+      "Tumor Suppressor Genes",
+      "Proto-oncogenes",
+      "Housekeeping Genes"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Hox genes are a group of related genes that specify the anterior-posterior axis and segment identity of metazoan organisms during early embryonic development.",
+    "level": 3,
+    "question": "Which genes are critical for determining body plan development and segment identity in animals?",
+    "subject": "Biology",
+    "thumbnail": "hox genes fruit fly embryo"
+  },
+  {
+    "answers": [
+      "Accretionary Wedge",
+      "Forearc Basin",
+      "Back-arc Basin",
+      "Ophiolite Complex"
+    ],
+    "correctAnswer": 3,
+    "explanation": "An ophiolite complex is a section of Earth's oceanic crust and the underlying upper mantle that has been uplifted and exposed above sea level, often emplaced onto continental crustal rocks.",
+    "level": 3,
+    "question": "What geological feature represents an uplifted sequence of oceanic crust and upper mantle?",
+    "subject": "Geology",
+    "thumbnail": "ophiolite sequence diagram"
+  },
+  {
+    "answers": [
+      "Clathrate Hydrates",
+      "Evaporites",
+      "Banded Iron Formations (BIFs)",
+      "Carbonatites"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Banded Iron Formations are distinctive sedimentary rocks, mostly Precambrian, consisting of repeated thin layers of iron oxides (magnetite or hematite) alternating with bands of iron-poor shale and chert. They likely indicate periods of oxygenation in early oceans.",
+    "level": 3,
+    "question": "Which Precambrian sedimentary rocks, alternating iron oxides and chert, suggest early ocean oxygenation?",
+    "subject": "Geology",
+    "thumbnail": "banded iron formation sample"
+  }
+]
