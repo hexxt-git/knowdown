@@ -364,7 +364,7 @@ export default function MePage() {
                 <Input
                   value={newFriendId}
                   onChange={(e) => setNewFriendId(e.target.value)}
-                  placeholder="Enter friend's Clerk ID"
+                  placeholder="Enter friend's ID"
                   className={
                     inviteStatus.type === "error" ? "border-red-500" : ""
                   }
@@ -385,8 +385,8 @@ export default function MePage() {
                     {inviteStatus.message}
                   </div>
                 )}
-                <p className="text-xs text-muted-foreground mt-2">
-                  You need to know your friend's Clerk ID to add them.
+                <p className="text-xs text-muted-foreground/80 mt-2">
+                  You need to know your friend's ID to add them.
                 </p>
               </div>
               <DialogFooter>

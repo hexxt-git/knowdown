@@ -40,13 +40,30 @@ type SessionResult = {
 export async function getPackStatus(): Promise<PackStatus> {
   const user = await protectAction("getPackStatus", true);
 
+  // Get current date
+  const now = new Date();
+
+  // Mark expired sessions as completed
+  await prisma.packSession.updateMany({
+    where: {
+      userId: user.userId,
+      isCompleted: false,
+      expiresAt: {
+        lt: now,
+      },
+    },
+    data: {
+      isCompleted: true,
+    },
+  });
+
   // Check for active pack session
   const activeSession = await prisma.packSession.findUnique({
     where: {
       userId: user.userId,
       isCompleted: false,
       expiresAt: {
-        gt: new Date(),
+        gt: now,
       },
     },
     include: {
@@ -67,7 +84,6 @@ export async function getPackStatus(): Promise<PackStatus> {
 
   // Calculate cooldown and active session stats
   const lastOpenedAt = userData?.lastPackOpenedAt;
-  const now = new Date();
   const cooldownMs = COOLDOWN_MINUTES * 60 * 1000;
   const elapsedMs = lastOpenedAt
     ? now.getTime() - lastOpenedAt.getTime()
@@ -140,6 +156,13 @@ export async function openPack(): Promise<PackResult> {
     });
   }
 
+  // Check for and clean up any existing pack sessions for this user (even expired or completed ones)
+  await prisma.packSession.deleteMany({
+    where: {
+      userId: user.userId,
+    },
+  });
+
   // Create pack session in the database
   const packSession = await prisma.packSession.create({
     data: {
@@ -188,6 +211,9 @@ export async function answerPackCard(
 ): Promise<boolean> {
   const user = await protectAction("answerPackCard", true);
 
+  // Get current date
+  const now = new Date();
+
   // Get pack session
   const packSession = await prisma.packSession.findUnique({
     where: {
@@ -195,7 +221,7 @@ export async function answerPackCard(
       userId: user.userId,
       isCompleted: false,
       expiresAt: {
-        gt: new Date(),
+        gt: now,
       },
     },
     include: {
@@ -204,6 +230,17 @@ export async function answerPackCard(
   });
 
   if (!packSession) {
+    // Mark as completed if expired
+    await prisma.packSession.updateMany({
+      where: {
+        id: packId,
+        userId: user.userId,
+        isCompleted: false,
+      },
+      data: {
+        isCompleted: true,
+      },
+    });
     throw new Error("Pack session not found or expired");
   }
 
@@ -274,6 +311,9 @@ export async function getSessionCards(
 ): Promise<SessionResult> {
   const user = await protectAction("getSessionCards", true);
 
+  // Get current date
+  const now = new Date();
+
   // First get the session to verify it exists
   const session = await prisma.packSession.findUnique({
     where: {
@@ -281,12 +321,23 @@ export async function getSessionCards(
       userId: user.userId,
       isCompleted: false,
       expiresAt: {
-        gt: new Date(),
+        gt: now,
       },
     },
   });
 
   if (!session) {
+    // Mark as completed if expired
+    await prisma.packSession.updateMany({
+      where: {
+        id: sessionId,
+        userId: user.userId,
+        isCompleted: false,
+      },
+      data: {
+        isCompleted: true,
+      },
+    });
     throw new Error("Session not found or expired");
   }
 
@@ -334,4 +385,24 @@ export async function getSessionCards(
     packId: sessionId,
     cardStatus,
   };
+}
+
+/**
+ * Helper function to clean up expired sessions
+ */
+export async function cleanupExpiredSessions(): Promise<void> {
+  const now = new Date();
+
+  // Mark expired sessions as completed
+  await prisma.packSession.updateMany({
+    where: {
+      isCompleted: false,
+      expiresAt: {
+        lt: now,
+      },
+    },
+    data: {
+      isCompleted: true,
+    },
+  });
 }

@@ -184,30 +184,30 @@ export function PlayableCard({
         />
         <DialogTitle className="sr-only">{card.question}</DialogTitle>
         <div className="fixed inset-0 overflow-y-auto md:flex flex-col items-center justify-center">
-          <div className="p-8 space-y-4 px-20 md:px-8">
-            <h1 className="text-lg md:text-2xl font-bold text-black/70 text-center">
+          <div className="p-8 space-y-4 px-10 md:px-8">
+            <h1 className="text-lg md:text-2xl font-bold text-black/70 text-center mb-6">
               {card.question}
             </h1>
 
-            <div className="space-y-2">
+            <div className="grid grid-cols-2 gap-3">
               {card.answers.map((answer, index) => (
                 <button
                   key={index}
                   onClick={() => handleAnswerClick(index)}
                   disabled={isSubmitting || isCorrect !== null || disabled}
                   className={cn(
-                    "p-3 w-full text-left rounded-lg border transition-colors",
+                    "p-3 text-center rounded-lg border-4 transition-colors h-full flex items-center justify-center",
                     selectedAnswer === index
-                      ? "border-primary bg-primary/10"
-                      : "border-gray-200 hover:bg-black/5",
+                      ? "border-primary bg-primary/50"
+                      : "bg-black/5 border-black/10 hover:border-black/15 hover:bg-black/10",
                     isCorrect !== null &&
                       selectedAnswer === index &&
                       (isCorrect
-                        ? "border-green-500 bg-green-50"
-                        : "border-red-500 bg-red-50")
+                        ? "border-green-500 bg-green-400/50"
+                        : "border-red-500 bg-red-500/50")
                   )}
                 >
-                  {answer}
+                  <span className="text-sm md:text-base">{answer}</span>
                 </button>
               ))}
             </div>
@@ -215,18 +215,19 @@ export function PlayableCard({
             {isCorrect === null ? (
               <Button
                 onClick={handleSubmit}
+                size="xl"
                 disabled={selectedAnswer === null || isSubmitting || disabled}
-                className="w-full mt-4"
+                className="w-full mt-6"
               >
                 {isSubmitting ? "Submitting..." : "Submit Answer"}
               </Button>
             ) : (
               <div
                 className={cn(
-                  "rounded-lg p-4 mt-4 flex items-center justify-between",
+                  "rounded-lg p-4 mt-6 flex items-center justify-between",
                   isCorrect
-                    ? "bg-green-100 text-green-800 border border-green-200"
-                    : "bg-red-100 text-red-800 border border-red-200"
+                    ? "bg-green-400/50 border-4 border-green-500"
+                    : "bg-red-500/50 border-4 border-red-500"
                 )}
               >
                 <div className="flex items-center gap-2">
