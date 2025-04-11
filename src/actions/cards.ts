@@ -17,14 +17,7 @@ export async function getCardCollection(): Promise<Card[]> {
     },
   });
 
-  const randomCards = await prisma.card.findMany({
-    take: 100,
-    include: {
-      users: false,
-    },
-  });
-
-  return randomCards;
+  return cardCollection;
 }
 
 export async function giveCards(cardIds: string[]) {

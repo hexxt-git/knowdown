@@ -1,8 +1,25 @@
+-- CreateEnum
+CREATE TYPE "FriendInviteStatus" AS ENUM ('PENDING', 'ACCEPTED', 'BLOCKED');
+
 -- CreateTable
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,
+    "gamesPlayed" INTEGER NOT NULL DEFAULT 0,
+    "gamesWon" INTEGER NOT NULL DEFAULT 0,
+    "gamesLost" INTEGER NOT NULL DEFAULT 0,
+    "friends" TEXT[] DEFAULT ARRAY[]::TEXT[],
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "FriendInvite" (
+    "id" TEXT NOT NULL,
+    "senderId" TEXT NOT NULL,
+    "receiverId" TEXT NOT NULL,
+    "status" "FriendInviteStatus" NOT NULL DEFAULT 'PENDING',
+
+    CONSTRAINT "FriendInvite_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable

@@ -7,7 +7,7 @@ import { UserProfile } from "@/components/layout/UserProfile";
 
 export default async function Home() {
   return (
-    <div className="relative min-h-dvh flex flex-col items-center justify-center space-y-8">
+    <div className="min-h-[85vh] flex flex-col items-center justify-center space-y-8">
       <SignedIn>
         <UserProfile />
       </SignedIn>
@@ -30,12 +30,17 @@ export default async function Home() {
             </Button>
           </Link>
           <div className="grid grid-cols-1 md:grid-cols-[5fr_5fr_1fr] gap-4 md:gap-2">
-            <Button size="xl" variant="secondary">
-              Leaderboard <Trophy strokeWidth={2} className="size-6" />
-            </Button>
-            <Button size="xl" variant="secondary">
-              Friends <Users strokeWidth={2} className="size-6" />
-            </Button>
+            <Link href="/app/leaderboard" className="contents">
+              <Button size="xl" variant="secondary">
+                Leaderboard <Trophy strokeWidth={2} className="size-6" />
+              </Button>
+            </Link>
+            <Link href="/app/me" className="contents">
+              <Button size="xl" variant="secondary">
+                Friends <Users strokeWidth={2} className="size-6" />
+              </Button>
+            </Link>
+
             <Button size="xl" variant="secondary">
               <Settings strokeWidth={2} className="size-6" />
             </Button>

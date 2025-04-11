@@ -23,7 +23,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={`${bungee.variable} antialiased`}>
-          <div className="absolute inset-4 border-4 border-dashed border-black/15 rounded-xl pointer-events-none m-0!"></div>
+          <div className="fixed inset-4 border-4 border-dashed border-black/15 rounded-xl pointer-events-none m-0!"></div>
           {children}
         </body>
       </html>

@@ -16,13 +16,25 @@ datasource db {
 
 model User {
   id String @id // clerk id
-
-  // multiple users can have the same card
+  gamesPlayed Int @default(0)
+  gamesWon Int @default(0)
+  gamesLost Int @default(0)
+  friends String[] @default([]) // clerk ids
   cardCollection Card[]
-  
+  lastPackOpenedAt DateTime?
+}
 
-  // settings
+enum FriendInviteStatus {
+  PENDING
+  ACCEPTED
+  BLOCKED
+}
 
+model FriendInvite {
+  id String @id @default(uuid())
+  senderId String // clerk id
+  receiverId String // clerk id
+  status FriendInviteStatus @default(PENDING)
 }
 
 model Card {
