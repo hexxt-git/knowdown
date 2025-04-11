@@ -185,10 +185,10 @@ export default function LeaderboardPage() {
                       : player.username}
                   </span>
                 </div>
-                <div className="text-right font-semibold">
+                <div className="text-right font-semibold px-4">
                   {sortBy === "wins" ? player.gamesWon : player.cardCount}
                 </div>
-                <div className="text-right">
+                <div className="text-right px-4">
                   {sortBy === "wins" ? (
                     <span className="flex items-center justify-end gap-1">
                       {player.winRate}%
@@ -200,7 +200,7 @@ export default function LeaderboardPage() {
                     player.gamesPlayed
                   )}
                 </div>
-                <div className="text-right">
+                <div className="text-right px-4">
                   {sortBy === "wins" ? (
                     player.gamesPlayed
                   ) : (

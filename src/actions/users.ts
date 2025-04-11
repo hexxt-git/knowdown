@@ -50,6 +50,11 @@ export async function getFriends() {
     return { friends: [] };
   }
 
+  // If user has no friends, return empty list immediately
+  if (!currentUser.friends.length) {
+    return { friends: [] };
+  }
+
   // Get user details from Clerk for friend IDs
   const clerk = await clerkClient();
   const clerkUsers = await clerk.users.getUserList({

@@ -111,9 +111,11 @@ export default function Home() {
       <h1 className="text-4xl font-bold text-center text-primary">Knowdown</h1>
       <div className="flex flex-col gap-4 md:w-auto w-full md:min-w-82 md:p-8">
         <SignedIn>
-          <Button size="xl">
-            Start Battle &nbsp; <Sword strokeWidth={2} className="size-6" />
-          </Button>
+          <Link href="/game" className="contents">
+            <Button size="xl">
+              Start Battle &nbsp; <Sword strokeWidth={2} className="size-6" />
+            </Button>
+          </Link>
           <Link href="/app/me/card-collection" className="contents">
             <Button size="xl" variant="secondary">
               Card Collection <BookOpen strokeWidth={2} className="size-6" />
