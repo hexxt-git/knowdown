@@ -11,10 +11,10 @@ export default function LandingPage() {
           width={1000}
           height={1000}
           alt="background"
-          className="absolute inset-0 max-w-none max-h-none w-full h-full object-cover -z-10 opacity-7"
+          className="absolute inset-0 max-w-none max-h-none w-full h-full object-cover -z-10 opacity-7 origin-center translate-x-8 -translate-y-24"
           style={{
             transform:
-              "perspective(1000px) rotateX(12deg) rotateY(6deg) scale(1.15)",
+              "perspective(1000px) rotateX(17deg) rotateY(6deg) scale(1.2)",
             transformStyle: "preserve-3d",
           }}
         />
@@ -22,8 +22,7 @@ export default function LandingPage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 className="text-5xl font-bold mb-6">Welcome to Knowdown</h1>
         <p className="text-xl text-muted-foreground mb-8">
-          Your knowledge, organized and accessible. Start building your personal
-          knowledge base today.
+          The Competitive study duels for excelling students.
         </p>
         <Link href="/app">
           <Button size="xl">Go to App</Button>

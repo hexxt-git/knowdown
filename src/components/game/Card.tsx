@@ -140,7 +140,14 @@ export function PlayableCard({
   disabled = false,
 }: {
   card: CardClosed;
-  onAnswer: (cardId: string, answerIndex: number) => Promise<boolean>;
+  onAnswer: (
+    cardId: string,
+    answerIndex: number
+  ) => Promise<{
+    isCorrect: boolean;
+    explanation: string;
+    correctAnswer: number;
+  }>;
   disabled?: boolean;
 }) {
   const BackgroundSvg =
@@ -149,6 +156,8 @@ export function PlayableCard({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [explanation, setExplanation] = useState<string | null>(null);
+  const [correctAnswer, setCorrectAnswer] = useState<number | null>(null);
 
   const handleAnswerClick = (index: number) => {
     if (isSubmitting || isCorrect !== null) return;
@@ -161,7 +170,9 @@ export function PlayableCard({
     setIsSubmitting(true);
     try {
       const result = await onAnswer(card.id, selectedAnswer);
-      setIsCorrect(result);
+      setIsCorrect(result.isCorrect);
+      setExplanation(result.explanation);
+      setCorrectAnswer(result.correctAnswer);
     } catch (error) {
       console.error("Failed to submit answer:", error);
     } finally {
@@ -201,10 +212,11 @@ export function PlayableCard({
                       ? "border-primary bg-primary/50"
                       : "bg-black/5 border-black/10 hover:border-black/15 hover:bg-black/10",
                     isCorrect !== null &&
-                      selectedAnswer === index &&
-                      (isCorrect
+                      (correctAnswer === index
                         ? "border-green-500 bg-green-400/50"
-                        : "border-red-500 bg-red-500/50")
+                        : selectedAnswer === index && !isCorrect
+                        ? "border-red-500 bg-red-500/50"
+                        : "")
                   )}
                 >
                   <span className="text-sm md:text-base">{answer}</span>
@@ -222,34 +234,46 @@ export function PlayableCard({
                 {isSubmitting ? "Submitting..." : "Submit Answer"}
               </Button>
             ) : (
-              <div
-                className={cn(
-                  "rounded-lg p-4 mt-6 flex items-center justify-between",
-                  isCorrect
-                    ? "bg-green-400/50 border-4 border-green-500"
-                    : "bg-red-500/50 border-4 border-red-500"
-                )}
-              >
-                <div className="flex items-center gap-2">
-                  {isCorrect ? (
-                    <Check className="h-5 w-5" />
-                  ) : (
-                    <X className="h-5 w-5" />
+              <>
+                <div
+                  className={cn(
+                    "rounded-lg p-4 mt-6",
+                    isCorrect
+                      ? "bg-green-400/50 border-4 border-green-500"
+                      : "bg-red-500/50 border-4 border-red-500"
                   )}
-                  <span>
-                    {isCorrect
-                      ? "Correct! Card added to your collection."
-                      : "Incorrect! Card not added."}
-                  </span>
-                </div>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setIsOpen(false)}
                 >
-                  Close
-                </Button>
-              </div>
+                  <div className="flex items-center gap-2 mb-3">
+                    {isCorrect ? (
+                      <Check className="h-5 w-5" />
+                    ) : (
+                      <X className="h-5 w-5" />
+                    )}
+                    <span>
+                      {isCorrect
+                        ? "Correct! Card added to your collection."
+                        : "Incorrect! Card not added."}
+                    </span>
+                  </div>
+
+                  {explanation && (
+                    <div className="bg-black/10 p-3 rounded-lg mt-2">
+                      <p className="text-sm font-medium">Explanation:</p>
+                      <p className="text-sm mt-1">{explanation}</p>
+                    </div>
+                  )}
+
+                  <div className="flex justify-end mt-3">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      Close
+                    </Button>
+                  </div>
+                </div>
+              </>
             )}
           </div>
         </div>

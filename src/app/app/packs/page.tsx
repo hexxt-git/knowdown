@@ -160,15 +160,15 @@ export default function PacksPage() {
 
   // Handle card answer
   const handleCardAnswer = async (cardId: string, answerIndex: number) => {
-    if (!packId) return false;
+    if (!packId) return { isCorrect: false, explanation: "", correctAnswer: 0 };
 
     try {
-      const isCorrect = await answerPackCard(packId, cardId, answerIndex);
+      const result = await answerPackCard(packId, cardId, answerIndex);
 
       // Update the result for this card
       setCardResults((prev) => ({
         ...prev,
-        [cardId]: isCorrect,
+        [cardId]: result.isCorrect,
       }));
 
       // Update active session data
@@ -176,14 +176,18 @@ export default function PacksPage() {
         setActiveSession({
           ...activeSession,
           cardsAnswered: activeSession.cardsAnswered + 1,
-          cardsClaimed: activeSession.cardsClaimed + (isCorrect ? 1 : 0),
+          cardsClaimed: activeSession.cardsClaimed + (result.isCorrect ? 1 : 0),
         });
       }
 
-      return isCorrect;
+      return result;
     } catch (error: any) {
       console.error("Error answering card:", error);
-      return false;
+      return {
+        isCorrect: false,
+        explanation: "Error processing answer",
+        correctAnswer: 0,
+      };
     }
   };
 

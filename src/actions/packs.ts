@@ -208,7 +208,7 @@ export async function answerPackCard(
   packId: string,
   cardId: string,
   answerIndex: number
-): Promise<boolean> {
+): Promise<{ isCorrect: boolean; explanation: string; correctAnswer: number }> {
   const user = await protectAction("answerPackCard", true);
 
   // Get current date
@@ -279,7 +279,21 @@ export async function answerPackCard(
     });
   }
 
-  return isCorrect;
+  // Fetch the card to get the explanation
+  const card = await prisma.card.findUnique({
+    where: { id: cardId },
+    select: { explanation: true, correctAnswer: true },
+  });
+
+  if (!card) {
+    throw new Error("Card details not found");
+  }
+
+  return {
+    isCorrect,
+    explanation: card.explanation,
+    correctAnswer: card.correctAnswer,
+  };
 }
 
 export async function dismissPackSession(packId: string): Promise<boolean> {

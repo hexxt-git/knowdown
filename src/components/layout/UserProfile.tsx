@@ -28,9 +28,7 @@ export function UserProfile() {
       </Button>
       <div className="flex flex-col">
         <p className="font-bold">{user?.fullName}</p>
-        <p className="text-sm text-muted-foreground">
-          {user?.emailAddresses[0].emailAddress}
-        </p>
+        <p className="text-sm text-muted-foreground">{user?.id}</p>
       </div>
     </div>
   );

@@ -50,7 +50,28 @@ export async function getFriends() {
     return { friends: [] };
   }
 
-  return { friends: currentUser.friends };
+  // Get user details from Clerk for friend IDs
+  const clerk = await clerkClient();
+  const clerkUsers = await clerk.users.getUserList({
+    userId: currentUser.friends,
+  });
+
+  // Create a map of user details
+  const friendsList = clerkUsers.data.map((clerkUser: any) => {
+    const displayName =
+      clerkUser.firstName && clerkUser.lastName
+        ? `${clerkUser.firstName} ${clerkUser.lastName}`
+        : clerkUser.username ||
+          clerkUser.emailAddresses[0]?.emailAddress ||
+          "Unknown User";
+
+    return {
+      id: clerkUser.id,
+      username: displayName,
+    };
+  });
+
+  return { friends: friendsList };
 }
 
 export async function getPendingInvites() {
@@ -63,11 +84,57 @@ export async function getPendingInvites() {
     },
   });
 
-  return pendingInvites;
+  // Get sender usernames from Clerk
+  const senderIds = pendingInvites.map((invite) => invite.senderId);
+
+  const clerk = await clerkClient();
+  const clerkUsers = await clerk.users.getUserList({
+    userId: senderIds,
+  });
+
+  // Create a map of sender IDs to usernames
+  const senderMap = new Map();
+  clerkUsers.data.forEach((clerkUser: any) => {
+    const displayName =
+      clerkUser.firstName && clerkUser.lastName
+        ? `${clerkUser.firstName} ${clerkUser.lastName}`
+        : clerkUser.username ||
+          clerkUser.emailAddresses[0]?.emailAddress ||
+          "Unknown User";
+
+    senderMap.set(clerkUser.id, displayName);
+  });
+
+  // Add usernames to invites
+  const invitesWithNames = pendingInvites.map((invite) => ({
+    ...invite,
+    senderName: senderMap.get(invite.senderId) || "Unknown User",
+  }));
+
+  return invitesWithNames;
 }
 
-export async function sendFriendInvite(receiverId: string) {
+export async function sendFriendInvite(receiverIdOrName: string) {
   const user = await protectAction("sendFriendInvite", true);
+
+  // Check if input is a user ID or a username
+  let receiverId = receiverIdOrName;
+
+  // If the input doesn't look like a UUID, try to find user by name
+  if (!receiverIdOrName.includes("-") || receiverIdOrName.length < 30) {
+    // Try to find user by name
+    const clerk = await clerkClient();
+    const searchResults = await clerk.users.getUserList({
+      query: receiverIdOrName,
+      limit: 1,
+    });
+
+    if (searchResults.data.length === 0) {
+      throw new Error("User not found");
+    }
+
+    receiverId = searchResults.data[0].id;
+  }
 
   if (user.userId === receiverId) {
     throw new Error("Cannot send friend invite to yourself");

@@ -32,27 +32,112 @@ import {
   DialogClose,
 } from "@/components/ui/dialog";
 
+// Friend Invite Item Component
+interface FriendInviteItemProps {
+  invite: {
+    id: string;
+    senderId: string;
+    senderName: string;
+    receiverId: string;
+    status: string;
+  };
+  onResponse: (
+    inviteId: string,
+    accept: boolean,
+    senderId: string
+  ) => Promise<void>;
+}
+
+function FriendInviteItem({ invite, onResponse }: FriendInviteItemProps) {
+  const [isResponding, setIsResponding] = useState(false);
+  const [responseStatus, setResponseStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
+
+  const handleResponse = async (accept: boolean) => {
+    setIsResponding(true);
+
+    try {
+      await onResponse(invite.id, accept, invite.senderId);
+
+      setResponseStatus({
+        type: "success",
+        message: accept ? "Friend request accepted" : "Friend request declined",
+      });
+    } catch (error: any) {
+      setResponseStatus({
+        type: "error",
+        message: error.message || "Failed to respond to invite",
+      });
+      setIsResponding(false);
+    }
+  };
+
+  return (
+    <div className="flex flex-col p-2 bg-black/5 rounded">
+      <div className="flex justify-between items-center">
+        <span className="text-sm">
+          {invite.senderName}{" "}
+          <span className="text-xs text-muted-foreground">
+            ({invite.senderId})
+          </span>
+        </span>
+        <div className="flex gap-2">
+          <Button
+            variant="outline"
+            size="icon"
+            className="h-7 w-7 bg-green-500/10 hover:bg-green-500/20"
+            onClick={() => handleResponse(true)}
+            disabled={isResponding || responseStatus.type !== null}
+          >
+            <Check className="h-4 w-4" />
+          </Button>
+          <Button
+            variant="outline"
+            size="icon"
+            className="h-7 w-7 bg-red-500/10 hover:bg-red-500/20"
+            onClick={() => handleResponse(false)}
+            disabled={isResponding || responseStatus.type !== null}
+          >
+            <X className="h-4 w-4" />
+          </Button>
+        </div>
+      </div>
+
+      {responseStatus.type && (
+        <div
+          className={`mt-2 text-xs flex items-center ${
+            responseStatus.type === "success"
+              ? "text-green-600"
+              : "text-red-600"
+          }`}
+        >
+          {responseStatus.type === "success" ? (
+            <CheckCircle className="h-3 w-3 mr-1" />
+          ) : (
+            <AlertCircle className="h-3 w-3 mr-1" />
+          )}
+          {responseStatus.message}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function MePage() {
   const [userStats, setUserStats] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const [friends, setFriends] = useState<string[]>([]);
+  const [friends, setFriends] = useState<
+    Array<{ id: string; username: string }>
+  >([]);
   const [pendingInvites, setPendingInvites] = useState<any[]>([]);
   const [newFriendId, setNewFriendId] = useState("");
   const [isAddingFriend, setIsAddingFriend] = useState(false);
-  const [isRespondingToInvite, setIsRespondingToInvite] = useState(false);
   const [inviteStatus, setInviteStatus] = useState<{
     type: "success" | "error" | null;
     message: string;
   }>({ type: null, message: "" });
-  const [inviteResponseMessages, setInviteResponseMessages] = useState<
-    Record<
-      string,
-      {
-        type: "success" | "error" | null;
-        message: string;
-      }
-    >
-  >({});
   const [dialogOpen, setDialogOpen] = useState(false);
 
   useEffect(() => {
@@ -128,51 +213,38 @@ export default function MePage() {
     }
   };
 
-  const handleRespondToInvite = async (inviteId: string, accept: boolean) => {
-    setIsRespondingToInvite(true);
-
-    // Initialize or update the response message for this specific invite
-    setInviteResponseMessages((prev) => ({
-      ...prev,
-      [inviteId]: { type: null, message: "" },
-    }));
-
+  const handleRespondToInvite = async (
+    inviteId: string,
+    accept: boolean,
+    senderId: string
+  ) => {
     try {
       await respondToFriendInvite(inviteId, accept);
 
-      // Update local state
-      if (accept) {
-        const invite = pendingInvites.find((inv) => inv.id === inviteId);
-        if (invite) {
-          setFriends([...friends, invite.senderId]);
-        }
-      }
+      // Find the sender name from the pending invites
+      const invite = pendingInvites.find((inv) => inv.id === inviteId);
 
-      // Update the message for this specific invite
-      setInviteResponseMessages((prev) => ({
-        ...prev,
-        [inviteId]: {
-          type: "success",
-          message: accept
-            ? "Friend request accepted"
-            : "Friend request declined",
-        },
-      }));
+      // Update local state
+      if (accept && invite) {
+        setFriends((prevFriends) => [
+          ...prevFriends,
+          {
+            id: senderId,
+            username: invite.senderName,
+          },
+        ]);
+      }
 
       // Remove invite from list after 2 seconds
       setTimeout(() => {
-        setPendingInvites(pendingInvites.filter((inv) => inv.id !== inviteId));
+        setPendingInvites((prevInvites) =>
+          prevInvites.filter((inv) => inv.id !== inviteId)
+        );
       }, 2000);
+
+      return Promise.resolve();
     } catch (error: any) {
-      setInviteResponseMessages((prev) => ({
-        ...prev,
-        [inviteId]: {
-          type: "error",
-          message: error.message || "Failed to respond to invite",
-        },
-      }));
-    } finally {
-      setIsRespondingToInvite(false);
+      return Promise.reject(error);
     }
   };
 
@@ -260,12 +332,12 @@ export default function MePage() {
 
           {friends.length > 0 ? (
             <div className="space-y-2 mb-4">
-              {friends.map((friendId) => (
+              {friends.map((friend) => (
                 <div
-                  key={friendId}
+                  key={friend.id}
                   className="flex justify-between items-center p-2 bg-black/5 rounded"
                 >
-                  <span className="font-medium">{friendId}</span>
+                  <span className="font-medium">{friend.username}</span>
                 </div>
               ))}
             </div>
@@ -281,67 +353,13 @@ export default function MePage() {
                 Pending Invites ({pendingInvites.length})
               </h3>
               <div className="space-y-2 mb-4">
-                {pendingInvites.map((invite) => {
-                  const responseMessage = inviteResponseMessages[invite.id];
-
-                  return (
-                    <div
-                      key={invite.id}
-                      className="flex flex-col p-2 bg-black/5 rounded"
-                    >
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm">{invite.senderId}</span>
-                        <div className="flex gap-2">
-                          <Button
-                            variant="outline"
-                            size="icon"
-                            className="h-7 w-7 bg-green-500/10 hover:bg-green-500/20"
-                            onClick={() =>
-                              handleRespondToInvite(invite.id, true)
-                            }
-                            disabled={
-                              isRespondingToInvite ||
-                              responseMessage?.type !== null
-                            }
-                          >
-                            <Check className="h-4 w-4" />
-                          </Button>
-                          <Button
-                            variant="outline"
-                            size="icon"
-                            className="h-7 w-7 bg-red-500/10 hover:bg-red-500/20"
-                            onClick={() =>
-                              handleRespondToInvite(invite.id, false)
-                            }
-                            disabled={
-                              isRespondingToInvite ||
-                              responseMessage?.type !== null
-                            }
-                          >
-                            <X className="h-4 w-4" />
-                          </Button>
-                        </div>
-                      </div>
-
-                      {responseMessage?.type && (
-                        <div
-                          className={`mt-2 text-xs flex items-center ${
-                            responseMessage.type === "success"
-                              ? "text-green-600"
-                              : "text-red-600"
-                          }`}
-                        >
-                          {responseMessage.type === "success" ? (
-                            <CheckCircle className="h-3 w-3 mr-1" />
-                          ) : (
-                            <AlertCircle className="h-3 w-3 mr-1" />
-                          )}
-                          {responseMessage.message}
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
+                {pendingInvites.map((invite) => (
+                  <FriendInviteItem
+                    key={invite.id}
+                    invite={invite}
+                    onResponse={handleRespondToInvite}
+                  />
+                ))}
               </div>
             </>
           )}
@@ -359,12 +377,12 @@ export default function MePage() {
               </DialogHeader>
               <div className="py-4">
                 <label className="text-sm font-medium mb-2 block">
-                  Friend ID
+                  Friend Username or ID
                 </label>
                 <Input
                   value={newFriendId}
                   onChange={(e) => setNewFriendId(e.target.value)}
-                  placeholder="Enter friend's ID"
+                  placeholder="Enter friend's username or ID"
                   className={
                     inviteStatus.type === "error" ? "border-red-500" : ""
                   }
@@ -386,7 +404,7 @@ export default function MePage() {
                   </div>
                 )}
                 <p className="text-xs text-muted-foreground/80 mt-2">
-                  You need to know your friend's ID to add them.
+                  You can search by username or ID to add a friend.
                 </p>
               </div>
               <DialogFooter>
