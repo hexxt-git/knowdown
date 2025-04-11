@@ -3,7 +3,7 @@ import { SignInButton, SignOutButton } from "@clerk/nextjs";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { Trophy, Users, BookOpen, Sword, Settings, LogOut } from "lucide-react";
 import Link from "next/link";
-import { UserProfile } from "@/components/UserProfile";
+import { UserProfile } from "@/components/layout/UserProfile";
 
 export default async function Home() {
   return (

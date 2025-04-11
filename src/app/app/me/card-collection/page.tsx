@@ -1,12 +1,14 @@
-import { getCardCollection } from "@/actions/card-collection";
+import { getCardCollection } from "@/actions/cards";
 import { Card } from "@/lib/types/card";
+import { Card as CardComponent } from "@/components/game/Card";
+
 export default async function CardCollection() {
   const cardCollection = await getCardCollection();
 
   return (
-    <div>
+    <div className="flex p-8 flex-wrap items-start gap-4">
       {cardCollection.map((card: Card) => (
-        <div key={card.id}>{JSON.stringify(card)}</div>
+        <CardComponent key={card.id} card={card} />
       ))}
     </div>
   );
