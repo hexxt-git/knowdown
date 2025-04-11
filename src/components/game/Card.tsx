@@ -3,6 +3,7 @@
 import {
   Card as CardType,
   CardThumbnail as CardThumbnailType,
+  CardClosed,
 } from "@/lib/types/card";
 import EasyCard from "@/assets/cards/easy.svg";
 import MediumCard from "@/assets/cards/medium.svg";
@@ -17,12 +18,13 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { DialogTitle } from "@radix-ui/react-dialog";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Check, X } from "lucide-react";
 
 export function CardThumbnail({
   card,
@@ -125,6 +127,129 @@ export function Card({ card }: { card: CardType }) {
                 </div>
               </CollapsibleContent>
             </Collapsible>
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
+export function PlayableCard({
+  card,
+  onAnswer,
+  disabled = false,
+}: {
+  card: CardClosed;
+  onAnswer: (cardId: string, answerIndex: number) => Promise<boolean>;
+  disabled?: boolean;
+}) {
+  const BackgroundSvg =
+    card.level === 1 ? EasyModal : card.level === 2 ? MediumModal : HardModal;
+  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleAnswerClick = (index: number) => {
+    if (isSubmitting || isCorrect !== null) return;
+    setSelectedAnswer(index);
+  };
+
+  const handleSubmit = async () => {
+    if (selectedAnswer === null || isSubmitting || disabled) return;
+
+    setIsSubmitting(true);
+    try {
+      const result = await onAnswer(card.id, selectedAnswer);
+      setIsCorrect(result);
+    } catch (error) {
+      console.error("Failed to submit answer:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      <DialogTrigger asChild>
+        <div>
+          <CardThumbnail hoverable card={card} />
+        </div>
+      </DialogTrigger>
+      <DialogContent className="border-none bg-transparent shadow-none w-fit h-fit max-w-none! max-h-none! p-0">
+        <img
+          src={BackgroundSvg.src}
+          alt="card background"
+          className="w-200 max-w-[100vw]! rotate-90 md:rotate-0"
+        />
+        <DialogTitle className="sr-only">{card.question}</DialogTitle>
+        <div className="fixed inset-0 overflow-y-auto md:flex flex-col items-center justify-center">
+          <div className="p-8 space-y-4 px-20 md:px-8">
+            <h1 className="text-lg md:text-2xl font-bold text-black/70 text-center">
+              {card.question}
+            </h1>
+
+            <div className="space-y-2">
+              {card.answers.map((answer, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleAnswerClick(index)}
+                  disabled={isSubmitting || isCorrect !== null || disabled}
+                  className={cn(
+                    "p-3 w-full text-left rounded-lg border transition-colors",
+                    selectedAnswer === index
+                      ? "border-primary bg-primary/10"
+                      : "border-gray-200 hover:bg-black/5",
+                    isCorrect !== null &&
+                      selectedAnswer === index &&
+                      (isCorrect
+                        ? "border-green-500 bg-green-50"
+                        : "border-red-500 bg-red-50")
+                  )}
+                >
+                  {answer}
+                </button>
+              ))}
+            </div>
+
+            {isCorrect === null ? (
+              <Button
+                onClick={handleSubmit}
+                disabled={selectedAnswer === null || isSubmitting || disabled}
+                className="w-full mt-4"
+              >
+                {isSubmitting ? "Submitting..." : "Submit Answer"}
+              </Button>
+            ) : (
+              <div
+                className={cn(
+                  "rounded-lg p-4 mt-4 flex items-center justify-between",
+                  isCorrect
+                    ? "bg-green-100 text-green-800 border border-green-200"
+                    : "bg-red-100 text-red-800 border border-red-200"
+                )}
+              >
+                <div className="flex items-center gap-2">
+                  {isCorrect ? (
+                    <Check className="h-5 w-5" />
+                  ) : (
+                    <X className="h-5 w-5" />
+                  )}
+                  <span>
+                    {isCorrect
+                      ? "Correct! Card added to your collection."
+                      : "Incorrect! Card not added."}
+                  </span>
+                </div>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Close
+                </Button>
+              </div>
+            )}
           </div>
         </div>
       </DialogContent>

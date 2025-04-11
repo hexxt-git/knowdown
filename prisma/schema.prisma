@@ -22,6 +22,29 @@ model User {
   friends String[] @default([]) // clerk ids
   cardCollection Card[]
   lastPackOpenedAt DateTime?
+  activePack PackSession?
+}
+
+model PackSession {
+  id String @id @default(uuid())
+  userId String @unique
+  user User @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+  isCompleted Boolean @default(false)
+  packCards PackCard[]
+}
+
+model PackCard {
+  id String @id @default(uuid())
+  cardId String
+  correctAnswer Int
+  answered Boolean @default(false)
+  claimed Boolean @default(false)
+  packSessionId String
+  packSession PackSession @relation(fields: [packSessionId], references: [id], onDelete: Cascade)
+
+  @@index([packSessionId])
 }
 
 enum FriendInviteStatus {
