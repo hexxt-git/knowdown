@@ -96,3 +96,5 @@ This application can be deployed on:
 - [Neon](https://neon.tech/) - For the PostgreSQL database
 
 ## Why this stack
+
+Minduel uses a serverless-first architecture to deliver a fast, scalable learning experience while keeping costs low. Next.js 15's edge runtime and serverless functions handle most requests, automatically scaling based on demand. We only use traditional servers for real-time game sessions via Socket.io, where persistent connections are necessary and vertical scaling is more favorable. Prisma optimizes our database queries, while Neon's serverless PostgreSQL ensures our database scales automatically. This approach lets us focus on building an engaging learning experience without worrying about server maintenance or scaling issues.
