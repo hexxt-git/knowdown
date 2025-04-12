@@ -31,10 +31,12 @@ export function CardThumbnail({
   card,
   fontSize = "",
   hoverable = false,
+  showPreview = true,
 }: {
-  card: CardThumbnailType;
+  card: CardThumbnailType & { explanation?: string };
   fontSize?: string;
   hoverable?: boolean;
+  showPreview?: boolean;
 }) {
   const BackgroundSvg =
     card.level === 1 ? EasyCard : card.level === 2 ? MediumCard : HardCard;
@@ -48,10 +50,10 @@ export function CardThumbnail({
         whileHover={
           hoverable
             ? {
-              scale: 1.05,
-              rotate: hoverRotation,
-              transition: { duration: 0.3 },
-            }
+                scale: 1.05,
+                rotate: hoverRotation,
+                transition: { duration: 0.3 },
+              }
             : {}
         }
       >
@@ -67,9 +69,7 @@ export function CardThumbnail({
             card.level === 3 && "text-danger"
           )}
         >
-          <p style={{ fontSize }}>
-            {card.thumbnail}
-          </p>
+          <p style={{ fontSize }}>{card.thumbnail}</p>
         </div>
 
         {/* Subject indicator */}
@@ -85,7 +85,13 @@ export function CardThumbnail({
   );
 }
 
-export function Card({ card, fontSize }: { card: CardType, fontSize?: string }) {
+export function Card({
+  card,
+  fontSize,
+}: {
+  card: CardType;
+  fontSize?: string;
+}) {
   const BackgroundSvg =
     card.level === 1 ? EasyModal : card.level === 2 ? MediumModal : HardModal;
   const [isAnswerOpen, setIsAnswerOpen] = useState(false);
@@ -119,8 +125,9 @@ export function Card({ card, fontSize }: { card: CardType, fontSize?: string }) 
                 <button className="bg-black/20 flex items-center gap-2 p-2 rounded-lg w-fit  border border-black/20">
                   <span>Reveal Answer</span>
                   <ChevronDown
-                    className={`h-4 w-4 transition-transform ${isAnswerOpen ? "rotate-180" : ""
-                      }`}
+                    className={`h-4 w-4 transition-transform ${
+                      isAnswerOpen ? "rotate-180" : ""
+                    }`}
                   />
                 </button>
               </CollapsibleTrigger>
@@ -167,17 +174,14 @@ export function PlayableCard({
   const [explanation, setExplanation] = useState<string | null>(null);
   const [correctAnswer, setCorrectAnswer] = useState<number | null>(null);
 
-  const handleAnswerClick = (index: number) => {
-    if (isSubmitting || isCorrect !== null) return;
+  const handleAnswerClick = async (index: number) => {
+    if (isSubmitting || isCorrect !== null || disabled) return;
+
     setSelectedAnswer(index);
-  };
-
-  const handleSubmit = async () => {
-    if (selectedAnswer === null || isSubmitting || disabled) return;
-
     setIsSubmitting(true);
+
     try {
-      const result = await onAnswer(card.id, selectedAnswer);
+      const result = await onAnswer(card.id, index);
       setIsCorrect(result.isCorrect);
       setExplanation(result.explanation);
       setCorrectAnswer(result.correctAnswer);
@@ -188,8 +192,25 @@ export function PlayableCard({
     }
   };
 
+  // Handler for dialog open state changes
+  const handleOpenChange = (open: boolean) => {
+    // Only allow closing if we haven't selected an answer yet or if we've seen the result
+    if (!open && (selectedAnswer === null || isCorrect !== null)) {
+      // Reset states when closing the dialog after completion
+      if (isCorrect !== null) {
+        setSelectedAnswer(null);
+        setIsCorrect(null);
+        setExplanation(null);
+        setCorrectAnswer(null);
+      }
+      setIsOpen(false);
+    } else if (open) {
+      setIsOpen(true);
+    }
+  };
+
   return (
-    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+    <Dialog open={isOpen} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
         <div>
           <CardThumbnail hoverable card={card} fontSize={fontSize} />
@@ -216,72 +237,71 @@ export function PlayableCard({
                   disabled={isSubmitting || isCorrect !== null || disabled}
                   className={cn(
                     "p-3 text-center rounded-lg border-4 transition-colors h-full flex items-center justify-center",
-                    selectedAnswer === index
+                    selectedAnswer === index && isCorrect === null
+                      ? "border-primary bg-primary/50 animate-pulse"
+                      : selectedAnswer === index
                       ? "border-primary bg-primary/50"
                       : "bg-black/5 border-black/10 hover:border-black/15 hover:bg-black/10",
                     isCorrect !== null &&
-                    (correctAnswer === index
-                      ? "border-green-500 bg-green-400/50"
-                      : selectedAnswer === index && !isCorrect
+                      (correctAnswer === index
+                        ? "border-green-500 bg-green-400/50"
+                        : selectedAnswer === index && !isCorrect
                         ? "border-red-500 bg-red-500/50"
                         : "")
                   )}
                 >
-                  <span className="text-sm md:text-base">{answer}</span>
+                  <span className="text-sm md:text-base">
+                    {isSubmitting && selectedAnswer === index ? (
+                      <span className="inline-flex items-center">
+                        <span className="animate-pulse">Checking...</span>
+                      </span>
+                    ) : (
+                      answer
+                    )}
+                  </span>
                 </button>
               ))}
             </div>
 
-            {isCorrect === null ? (
-              <Button
-                onClick={handleSubmit}
-                size="xl"
-                disabled={selectedAnswer === null || isSubmitting || disabled}
-                className="w-full mt-6"
+            {isCorrect !== null && (
+              <div
+                className={cn(
+                  "rounded-lg p-4 mt-6",
+                  isCorrect
+                    ? "bg-green-400/50 border-4 border-green-500"
+                    : "bg-red-500/50 border-4 border-red-500"
+                )}
               >
-                {isSubmitting ? "Submitting..." : "Submit Answer"}
-              </Button>
-            ) : (
-              <>
-                <div
-                  className={cn(
-                    "rounded-lg p-4 mt-6",
-                    isCorrect
-                      ? "bg-green-400/50 border-4 border-green-500"
-                      : "bg-red-500/50 border-4 border-red-500"
+                <div className="flex items-center gap-2 mb-3">
+                  {isCorrect ? (
+                    <Check className="h-5 w-5" />
+                  ) : (
+                    <X className="h-5 w-5" />
                   )}
-                >
-                  <div className="flex items-center gap-2 mb-3">
-                    {isCorrect ? (
-                      <Check className="h-5 w-5" />
-                    ) : (
-                      <X className="h-5 w-5" />
-                    )}
-                    <span>
-                      {isCorrect
-                        ? "Correct! Card added to your collection."
-                        : "Incorrect! Card not added."}
-                    </span>
-                  </div>
-
-                  {explanation && (
-                    <div className="bg-black/10 p-3 rounded-lg mt-2">
-                      <p className="text-sm font-medium">Explanation:</p>
-                      <p className="text-sm mt-1">{explanation}</p>
-                    </div>
-                  )}
-
-                  <div className="flex justify-end mt-3">
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Close
-                    </Button>
-                  </div>
+                  <span>
+                    {isCorrect
+                      ? "Correct! Card added to your collection."
+                      : "Incorrect! Card not added."}
+                  </span>
                 </div>
-              </>
+
+                {explanation && (
+                  <div className="bg-black/10 p-3 rounded-lg mt-2">
+                    <p className="text-sm font-medium mb-1">Explanation:</p>
+                    <p className="text-sm">{explanation}</p>
+                  </div>
+                )}
+
+                <div className="flex justify-end mt-3">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Close
+                  </Button>
+                </div>
+              </div>
             )}
           </div>
         </div>

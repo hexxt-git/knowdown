@@ -10,7 +10,7 @@ const bungee = Bungee({
 });
 
 export const metadata: Metadata = {
-  title: "Knowdown | A showdown of smarts",
+  title: "Minduel | A showdown of smarts",
   description: "compete in 1v1 battles and cleam your opponents cards",
 };
 

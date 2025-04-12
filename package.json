@@ -1,5 +1,5 @@
 {
-  "name": "knowdown",
+  "name": "minduel",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -23,6 +23,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
+    "dicebear": "^9.2.2",
     "lucide-react": "^0.487.0",
     "motion": "^12.6.5",
     "next": "15.3.0",

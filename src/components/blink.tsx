@@ -1,22 +1,41 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 interface BlinkProps {
-    delay?: number; // Delay in milliseconds
-    children: React.ReactNode;
+  delay?: number; // Delay in milliseconds
+  children: React.ReactNode;
 }
 
 const Blink: React.FC<BlinkProps> = ({ delay = 500, children }) => {
-    const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(true);
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setIsVisible((prev) => !prev);
-        }, delay);
+  useEffect(() => {
+    let animationFrameId: number;
 
-        return () => clearInterval(interval);
-    }, [delay]);
+    const updateVisibility = () => {
+      const now = Date.now();
+      const phase = Math.floor(now / delay) % 2;
+      setIsVisible(phase === 0);
 
-    return <div style={{ opacity: isVisible ? 1 : 0.7, transition: `opacity ${delay / 2}ms` }}>{children}</div>;
+      animationFrameId = requestAnimationFrame(updateVisibility);
+    };
+
+    updateVisibility();
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [delay]);
+
+  return (
+    <div
+      style={{
+        opacity: isVisible ? 1 : 0.7,
+        transition: `opacity ${delay / 2}ms`,
+      }}
+    >
+      {children}
+    </div>
+  );
 };
 
 export default Blink;

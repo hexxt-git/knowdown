@@ -20,7 +20,7 @@ export default function LandingPage() {
         />
       </div>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h1 className="text-5xl font-bold mb-6">Welcome to Knowdown</h1>
+        <h1 className="text-5xl font-bold mb-6">Welcome to Minduel</h1>
         <p className="text-xl text-muted-foreground mb-8">
           The Competitive study duels for excelling students.
         </p>
