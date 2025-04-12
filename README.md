@@ -8,6 +8,10 @@ Minduel reimagines studying as an interactive, one-on-one knowledge challenge. D
 - **Knowledge Exchange**: When you present a card, your partner has a brief window to respond. A correct answer allows them to add the card to their collection, while an incorrect answer deducts progress points.
 - **Building Your Collection**: New cards can be earned through practice sets or review activities, but you must answer each card's question accurately to retain it. Mistakes mean missed opportunities.
 
+![image](https://github.com/user-attachments/assets/2a26b386-1140-461a-a596-dc36616d01ef)
+![image](https://github.com/user-attachments/assets/27bd600e-bbc5-4bb1-a671-d957ba1785ca)
+
+
 ## Features for Effective Learning
 
 - **Personalized Matching**: The platform connects learners based on subject interests, skill level, and card difficulty, ensuring balanced and meaningful interactions.
