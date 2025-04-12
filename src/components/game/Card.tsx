@@ -5,6 +5,7 @@ import {
   CardThumbnail as CardThumbnailType,
   CardClosed,
 } from "@/lib/types/card";
+
 import EasyCard from "@/assets/cards/easy.svg";
 import MediumCard from "@/assets/cards/medium.svg";
 import HardCard from "@/assets/cards/hard.svg";
@@ -28,9 +29,11 @@ import { ChevronDown, Check, X } from "lucide-react";
 
 export function CardThumbnail({
   card,
+  fontSize = "",
   hoverable = false,
 }: {
   card: CardThumbnailType;
+  fontSize?: string;
   hoverable?: boolean;
 }) {
   const BackgroundSvg =
@@ -45,10 +48,10 @@ export function CardThumbnail({
         whileHover={
           hoverable
             ? {
-                scale: 1.05,
-                rotate: hoverRotation,
-                transition: { duration: 0.3 },
-              }
+              scale: 1.05,
+              rotate: hoverRotation,
+              transition: { duration: 0.3 },
+            }
             : {}
         }
       >
@@ -64,13 +67,17 @@ export function CardThumbnail({
             card.level === 3 && "text-danger"
           )}
         >
-          {card.thumbnail}
+          <p style={{ fontSize }}>
+            {card.thumbnail}
+          </p>
         </div>
 
         {/* Subject indicator */}
         {card.subject && (
           <div className="absolute top-3 right-3 bg-black/40 px-2 py-0.5 rounded-md text-xs font-medium text-white rotate-3">
-            {card.subject}
+            <p style={{ fontSize: parseInt(fontSize) * 0.8 + "px" }}>
+              {card.subject}
+            </p>
           </div>
         )}
       </motion.div>
@@ -78,7 +85,7 @@ export function CardThumbnail({
   );
 }
 
-export function Card({ card }: { card: CardType }) {
+export function Card({ card, fontSize }: { card: CardType, fontSize?: string }) {
   const BackgroundSvg =
     card.level === 1 ? EasyModal : card.level === 2 ? MediumModal : HardModal;
   const [isAnswerOpen, setIsAnswerOpen] = useState(false);
@@ -87,7 +94,7 @@ export function Card({ card }: { card: CardType }) {
     <Dialog>
       <DialogTrigger asChild>
         <div>
-          <CardThumbnail hoverable card={card} />
+          <CardThumbnail hoverable card={card} fontSize={fontSize} />
         </div>
       </DialogTrigger>
       <DialogContent className="border-none bg-transparent shadow-none w-fit h-fit max-w-none! max-h-none! p-0">
@@ -112,9 +119,8 @@ export function Card({ card }: { card: CardType }) {
                 <button className="bg-black/20 flex items-center gap-2 p-2 rounded-lg w-fit  border border-black/20">
                   <span>Reveal Answer</span>
                   <ChevronDown
-                    className={`h-4 w-4 transition-transform ${
-                      isAnswerOpen ? "rotate-180" : ""
-                    }`}
+                    className={`h-4 w-4 transition-transform ${isAnswerOpen ? "rotate-180" : ""
+                      }`}
                   />
                 </button>
               </CollapsibleTrigger>
@@ -138,6 +144,7 @@ export function PlayableCard({
   card,
   onAnswer,
   disabled = false,
+  fontSize = "",
 }: {
   card: CardClosed;
   onAnswer: (
@@ -149,6 +156,7 @@ export function PlayableCard({
     correctAnswer: number;
   }>;
   disabled?: boolean;
+  fontSize?: string;
 }) {
   const BackgroundSvg =
     card.level === 1 ? EasyModal : card.level === 2 ? MediumModal : HardModal;
@@ -184,7 +192,7 @@ export function PlayableCard({
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <div>
-          <CardThumbnail hoverable card={card} />
+          <CardThumbnail hoverable card={card} fontSize={fontSize} />
         </div>
       </DialogTrigger>
       <DialogContent className="border-none bg-transparent shadow-none w-fit h-fit max-w-none! max-h-none! p-0">
@@ -212,9 +220,9 @@ export function PlayableCard({
                       ? "border-primary bg-primary/50"
                       : "bg-black/5 border-black/10 hover:border-black/15 hover:bg-black/10",
                     isCorrect !== null &&
-                      (correctAnswer === index
-                        ? "border-green-500 bg-green-400/50"
-                        : selectedAnswer === index && !isCorrect
+                    (correctAnswer === index
+                      ? "border-green-500 bg-green-400/50"
+                      : selectedAnswer === index && !isCorrect
                         ? "border-red-500 bg-red-500/50"
                         : "")
                   )}

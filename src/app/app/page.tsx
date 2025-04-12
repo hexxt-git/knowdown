@@ -111,7 +111,7 @@ export default function Home() {
       <h1 className="text-4xl font-bold text-center text-primary">Knowdown</h1>
       <div className="flex flex-col gap-4 md:w-auto w-full md:min-w-82 md:p-8">
         <SignedIn>
-          <Link href="/game" className="contents">
+          <Link href="/app/battle" className="contents">
             <Button size="xl">
               Start Battle &nbsp; <Sword strokeWidth={2} className="size-6" />
             </Button>
