@@ -580,7 +580,7 @@ export default function CardGame({
                   delay={
                     (card as CardWithUIState).playedAt &&
                     Date.now() - ((card as CardWithUIState).playedAt || 0) <
-                      10000
+                      5000
                       ? 300
                       : 1000
                   }

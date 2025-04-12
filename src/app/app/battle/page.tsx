@@ -316,7 +316,7 @@ export default function BattlePage() {
           isLoading || results ? "opacity-50" : "opacity-100"
         }`}
       >
-        <h1 className="text-4xl font-bold">Battle Page</h1>
+        <h1 className="text-4xl font-bold text-primary">Battle Page</h1>
 
         <div className="wrapper w-full max-w-[800px] mx-auto bg-black/5 rounded-xl">
           {game && (

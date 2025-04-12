@@ -23,102 +23,108 @@ export async function updateGameResults(gameResult: GameResult) {
 
   // Begin transaction to ensure all updates succeed or fail together
   try {
-    await prisma.$transaction(async (tx) => {
-      // 1. Update current user stats
-      await tx.user.update({
-        where: { id: currentUserId },
-        data: {
-          gamesPlayed: { increment: 1 },
-          ...(gameResult.result === "won"
-            ? { gamesWon: { increment: 1 } }
-            : { gamesLost: { increment: 1 } }),
-        },
-      });
-
-      // 2. If opponent is a real user, update their stats too
-      await tx.user.update({
-        where: { id: gameResult.opponentId },
-        data: {
-          gamesPlayed: { increment: 1 },
-          ...(gameResult.result === "won"
-            ? { gamesLost: { increment: 1 } }
-            : { gamesWon: { increment: 1 } }),
-        },
-      });
-
-      // 3. Transfer cards - only if there are cards to transfer
-      if (
-        gameResult.playerCards.length > 0 ||
-        gameResult.opponentCards.length > 0
-      ) {
-        // Get current user with their card collection
-        const currentUser = await tx.user.findUnique({
+    await prisma.$transaction(
+      async (tx) => {
+        // user stats
+        await tx.user.update({
           where: { id: currentUserId },
-          include: { cardCollection: true },
+          data: {
+            gamesPlayed: { increment: 1 },
+            ...(gameResult.result === "won"
+              ? { gamesWon: { increment: 1 } }
+              : { gamesLost: { increment: 1 } }),
+          },
         });
 
-        if (!currentUser) {
-          throw new Error("Current user not found");
-        }
+        await tx.user.update({
+          where: { id: gameResult.opponentId },
+          data: {
+            gamesPlayed: { increment: 1 },
+            ...(gameResult.result === "won"
+              ? { gamesLost: { increment: 1 } }
+              : { gamesWon: { increment: 1 } }),
+          },
+        });
 
-        // If player won, add opponent's cards to player's collection
         if (
-          gameResult.result === "won" &&
+          gameResult.playerCards.length > 0 ||
           gameResult.opponentCards.length > 0
         ) {
-          // Connect the cards to the winner
-          await tx.user.update({
+          // Get current user with their card collection
+          const currentUser = await tx.user.findUnique({
             where: { id: currentUserId },
-            data: {
-              cardCollection: {
-                connect: gameResult.opponentCards.map((card) => ({
-                  id: card.id,
-                })),
-              },
-            },
+            include: { cardCollection: true },
           });
 
-          // If opponent is real, disconnect cards from them
-          await tx.user.update({
-            where: { id: gameResult.opponentId },
-            data: {
-              cardCollection: {
-                disconnect: gameResult.opponentCards.map((card) => ({
-                  id: card.id,
-                })),
+          if (!currentUser) {
+            throw new Error("Current user not found");
+          }
+
+          // If player won, add opponent's cards to player's collection
+          if (
+            gameResult.result === "won" &&
+            gameResult.opponentCards.length > 0
+          ) {
+            // Connect the cards to the winner
+            await tx.user.update({
+              where: { id: currentUserId },
+              data: {
+                cardCollection: {
+                  connect: gameResult.opponentCards.map((card) => ({
+                    id: card.id,
+                  })),
+                },
               },
-            },
-          });
+            });
+
+            // If opponent is real, disconnect cards from them
+            await tx.user.update({
+              where: { id: gameResult.opponentId },
+              data: {
+                cardCollection: {
+                  disconnect: gameResult.opponentCards.map((card) => ({
+                    id: card.id,
+                  })),
+                },
+              },
+            });
+          }
+
+          // If player lost, add player's cards to opponent's collection
+          if (
+            gameResult.result === "lost" &&
+            gameResult.playerCards.length > 0
+          ) {
+            // Disconnect the cards from the loser
+            await tx.user.update({
+              where: { id: currentUserId },
+              data: {
+                cardCollection: {
+                  disconnect: gameResult.playerCards.map((card) => ({
+                    id: card.id,
+                  })),
+                },
+              },
+            });
+
+            // If opponent is real, connect cards to them
+            await tx.user.update({
+              where: { id: gameResult.opponentId },
+              data: {
+                cardCollection: {
+                  connect: gameResult.playerCards.map((card) => ({
+                    id: card.id,
+                  })),
+                },
+              },
+            });
+          }
         }
-
-        // If player lost, add player's cards to opponent's collection
-        if (gameResult.result === "lost" && gameResult.playerCards.length > 0) {
-          // Disconnect the cards from the loser
-          await tx.user.update({
-            where: { id: currentUserId },
-            data: {
-              cardCollection: {
-                disconnect: gameResult.playerCards.map((card) => ({
-                  id: card.id,
-                })),
-              },
-            },
-          });
-
-          // If opponent is real, connect cards to them
-          await tx.user.update({
-            where: { id: gameResult.opponentId },
-            data: {
-              cardCollection: {
-                connect: gameResult.playerCards.map((card) => ({
-                  id: card.id,
-                })),
-              },
-            },
-          });
-        }
+      },
+      {
+        timeout: 15000, // Increase timeout to 15 seconds
       }
-    });
+    );
 
     return { success: true };
   } catch (error) {
