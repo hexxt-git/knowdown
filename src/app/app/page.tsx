@@ -81,7 +81,7 @@ export default function Home() {
               className={cn(
                 "flex flex-col items-center p-3 px-4 gap-1 relative h-fit",
                 packAvailable &&
-                  "animate-pulse shadow-lg shadow-primary/20 ring-2 ring-primary"
+                "animate-pulse shadow-lg shadow-primary/20 ring-2 ring-primary"
               )}
             >
               <Package strokeWidth={2} className="size-6" />
@@ -111,9 +111,12 @@ export default function Home() {
       <h1 className="text-4xl font-bold text-center text-primary">Knowdown</h1>
       <div className="flex flex-col gap-4 md:w-auto w-full md:min-w-82 md:p-8">
         <SignedIn>
-          <Button size="xl">
-            Start Battle &nbsp; <Sword strokeWidth={2} className="size-6" />
-          </Button>
+          <Link href="/app/battle" className="contents">
+            <Button size="xl">
+              Start Battle &nbsp; <Sword strokeWidth={2} className="size-6" />
+            </Button>
+          </Link>
+
           <Link href="/app/me/card-collection" className="contents">
             <Button size="xl" variant="secondary">
               Card Collection <BookOpen strokeWidth={2} className="size-6" />
@@ -129,7 +132,7 @@ export default function Home() {
                 className={cn(
                   "w-full relative",
                   packAvailable &&
-                    "animate-pulse shadow-lg shadow-primary/20 ring-2 ring-primary"
+                  "animate-pulse shadow-lg shadow-primary/20 ring-2 ring-primary"
                 )}
               >
                 Card Packs <Package strokeWidth={2} className="size-6" />
